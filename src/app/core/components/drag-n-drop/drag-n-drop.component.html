@@ -1,0 +1,42 @@
+<div>
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <app-expansion-panel *ngFor="let element of formElements" [element]="element"></app-expansion-panel>
+    </div>
+    <div class="example-container">
+      <h2>Form</h2>
+      <div
+        cdkDropList
+        #formElementsList="cdkDropList"
+        [cdkDropListData]="formElements"
+        [cdkDropListConnectedTo]="[initElementsList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+            <app-form-element *ngFor="let element of formElements; index as i"
+                              cdkDrag
+                              [element]="element"
+                              [index]="i"
+                              [dragNDropType]="'form'">
+            </app-form-element>
+      </div>
+    </div>
+    <div class="example-container">
+      <h2>Elements</h2>
+      <div
+        cdkDropList
+        #initElementsList="cdkDropList"
+        [cdkDropListData]="initElements"
+        [cdkDropListConnectedTo]="[formElementsList]"
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let element of constInitElements" cdkDrag>
+            <app-form-element [element]="element" [dragNDropType]="'const'">
+            </app-form-element>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

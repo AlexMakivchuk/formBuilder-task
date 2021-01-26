@@ -1,0 +1,15 @@
+<div>
+  <label>{{element.styles.label.value}}</label>
+</div>
+<div>
+    <input  id="{{element.id}}"
+            class="input"
+            autocomplete="off"
+            [disabled]="disabled"
+            value="{{element.styles.value.value}}"
+            [ngStyle]="addStyle()"
+            placeholder="{{element.styles.placeholder.value}}">
+    <mat-hint class="error" *ngIf="hasError && submited">
+      <span>Error, required input</span>
+    </mat-hint>
+</div>

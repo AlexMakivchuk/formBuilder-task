@@ -1,0 +1,14 @@
+<div [ngSwitch]="element.name" style="margin: 10px; text-align: center">
+  <div *ngSwitchCase="names.select">
+    <app-select [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-select>
+  </div>
+  <div *ngSwitchCase="names.input">
+    <app-input [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-input>
+  </div>
+  <span *ngSwitchCase="names.checkbox">
+    <app-checkbox [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-checkbox>
+  </span>
+  <span *ngSwitchCase="names.button">
+    <app-button [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-button>
+  </span>
+</div>

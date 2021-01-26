@@ -1,0 +1,71 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        select styles
+      </mat-panel-title>
+      <mat-panel-description>
+
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="formControl" >
+        <div>width </div>
+        <input [formControlName]="'width'">
+        <span> px</span>
+      </div>
+      <p *ngIf="form.get('width').touched && form.get('width').invalid">Must Be A Number</p>
+
+      <div class="formControl">
+        <div>height </div>
+        <input [formControlName]="'height'">
+        <span> px</span>
+      </div>
+      <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
+
+      <div class="formControl">
+        <div>border </div>
+        <input [formControlName]="'border'">
+        <span> px</span>
+      </div>
+      <p *ngIf="form.get('border').touched && form.get('border').invalid">Must Be A Number</p>
+
+      <div class="formControl">
+        <div>borderCollor </div>
+        <input type="color" [formControlName]="'borderColor'">
+        <span> px</span>
+      </div>
+
+      <div class="formControl">
+        <div>borderRadius </div>
+        <input [formControlName]="'borderRadius'">
+        <span> px</span>
+      </div>
+
+      <div class="formControl">
+        <div>margin </div><input [formControlName]="'margin'"><span> px</span>
+      </div>
+      <p *ngIf="form.get('border').touched && form.get('margin').invalid">Must Be A Number</p>
+
+      <div class="formControl">
+        <div>padding </div><input [formControlName]="'padding'"><span> px</span>
+      </div>
+      <p *ngIf="form.get('border').touched && form.get('padding').invalid">Must Be A Number</p>
+
+      <br>
+      <button class="submit" type="submit">submit</button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<form [formGroup]="formOptions" (ngSubmit)="onSubmitOptions()">
+  <div formArrayName="options">
+    <div class="formArrayInput" *ngFor="let option of options; index as i">
+      <input formControlName="{{i}}"> <!--<button (click)="delControl(i)">del</button>-->
+    </div>
+  </div>
+  <button type="submit">save options</button>
+</form>
+<br>
+<button (click)="addControl()" [disabled]="disableOptionButton">add option ({{6 - options.length}})</button>
+

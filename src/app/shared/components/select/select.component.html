@@ -1,0 +1,3 @@
+  <select [disabled]="disabled" [ngStyle]="addStyle()">
+    <option *ngFor="let option of options; index as i" [value]="option.name+'-'+i">{{option.name}}</option>
+  </select>

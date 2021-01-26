@@ -1,0 +1,6 @@
+<section>
+  <div class="example-button-row">
+    <button *ngIf="element.type === 'basic'" id="{{ element.id }}" [disabled]="disabled" mat-raised-button>{{element.type}}</button>
+    <button *ngIf="element.type === 'primary'" id="{{ element.id }}" [disabled]="disabled" mat-raised-button color="primary">{{element.type}}</button>
+  </div>
+</section>

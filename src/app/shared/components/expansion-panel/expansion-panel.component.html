@@ -1,0 +1,24 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ element.styles?.value?.value ? element.styles?.value?.value : element.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        ID: {{ element.id }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-form-style-input *ngIf="element.name === 'input'"
+                          [form]="form"
+                          (submit)="OnSubmit()"
+                          [element]="element">
+    </app-form-style-input>
+    <app-form-style-select *ngIf="element.name === 'select'"
+                           [form]="form"
+                           (submit)="OnSubmit()"
+                           [element]="element">
+
+    </app-form-style-select>
+  </mat-expansion-panel>
+</mat-accordion>

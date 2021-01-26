@@ -1,0 +1,24 @@
+.formControl {
+  width: 100%;
+  height: 55px;
+
+  input {
+    width: 200px;
+    flex: auto;
+    padding: 5px;
+    height: 33px;
+  }
+
+  span {
+    width: 10px;
+    margin-left: 5px;
+    flex: auto;
+  }
+
+  label {
+    width: 50px;
+  }
+}
+
+
+

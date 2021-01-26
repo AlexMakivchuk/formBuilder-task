@@ -1,0 +1,20 @@
+p {
+  color: rgba(38, 50, 56, 0.82);
+  font-size: 18px;
+}
+
+.input {
+  border: 1px solid #d9d9d9;
+  min-height: 20px;
+  border-radius: 25px;
+  padding: 5px;
+  min-width: 50px;
+
+  &:focus {
+    border: 2px solid black;
+  }
+}
+
+.input-error {
+  border-color: rgba(178, 16, 1, 1);
+}
