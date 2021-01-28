@@ -1,0 +1,26 @@
+<div >
+<h5>Введите данные для входа</h5>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="alert alert-{{message.type}}"
+       *ngIf="message.text"
+    >{{message.text}}</div>
+  <div class="" [ngClass]="{'has-error':form.get('email').invalid && form.get('email').touched}">
+    <input id="email"   placeholder="Username" formControlName='email'>
+
+  </div>
+
+  <div class="" [ngClass]="{'has-error':form.get('password').invalid && form.get('password').touched}">
+    <input id="password" autocomplete="off" type="password" placeholder="Password" formControlName='password'>
+  </div>
+
+  <div>
+    <button class="button" [disabled]="form.invalid" >Вход</button>
+  </div>
+  <p  class="">
+    Нет аккаунта? <span class="span-butt" (click)="toRegistration()">Зарегистрироваться</span>
+  </p>
+</form>
+</div>
+
+

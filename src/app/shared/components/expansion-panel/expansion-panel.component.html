@@ -3,7 +3,7 @@
                        (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ element.styles?.value?.value ? element.styles?.value?.value : element.name }}
+        {{ element.name }}
       </mat-panel-title>
       <mat-panel-description>
         ID: {{ element.id }}
@@ -20,5 +20,17 @@
                            [element]="element">
 
     </app-form-style-select>
+    <app-form-style-checkbox *ngIf="element.name === 'checkbox'"
+                             [form]="form"
+                             (submit)="OnSubmit()"
+                             [element]="element"
+    >
+    </app-form-style-checkbox>
+    <app-form-style-button *ngIf="element.name === 'button'"
+                             [form]="form"
+                             (submit)="OnSubmit()"
+                             [element]="element"
+    >
+    </app-form-style-button>
   </mat-expansion-panel>
 </mat-accordion>

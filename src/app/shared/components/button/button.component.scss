@@ -29,3 +29,26 @@ section {
   justify-content: center;
   width: 120px;
 }
+
+button {
+  height: 40px;
+  border-radius: 20px;
+  width: 80px;
+}
+
+.basic{
+  background-color: #ffffff;
+
+  &:active {
+    background-color: #c1c1c1;
+  }
+}
+
+.primary {
+  background-color: #5485ff;
+  color: white;
+
+  &:active {
+    background-color: #4b64a3;
+  }
+}

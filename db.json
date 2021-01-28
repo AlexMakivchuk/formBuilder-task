@@ -1,9 +1,38 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "users": [
+    {
+      "email": "alexmakivchuk@gmail.com",
+      "password": "111111",
+      "name": "Alex",
+      "surname": "Makivchuk",
+      "agree": true,
+      "status": "admin",
+      "id": 1
+    },
+    {
+      "email": "aaaaa@aaa.aaa",
+      "password": "aaaaaa",
+      "name": "aaa",
+      "surname": "aaa",
+      "agree": true,
+      "id": 2
+    },
+    {
+      "email": "bbbbb@bbb.bbb",
+      "password": "aaaaaa",
+      "name": "aaaa",
+      "surname": "aaaa",
+      "agree": true,
+      "id": 3
+    },
+    {
+      "email": "aaagaa@aaa.aaa",
+      "password": "aaaaaa",
+      "name": "aaaaa",
+      "surname": "aaaaa",
+      "agree": true,
+      "id": 4
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "form-builder": []
 }

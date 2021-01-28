@@ -4,9 +4,15 @@ import { Store } from '@ngrx/store';
 import { getFormItems, State } from '../../reducers';
 import * as actions from '../../actions';
 import { NameValueInterface } from '../../../shared/models/name-value-interface';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import {BUTTON_STYLES, CHECKBOX_STYLES, CONST_OPTIONS, INPUT_STYLES, SELECT_STYLES} from '../../../shared/constants/element-constants';
+import {Observable, Subject} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
+import {
+  BUTTON_STYLES,
+  CHECKBOX_STYLES,
+  CONST_OPTIONS,
+  INPUT_STYLES,
+  SELECT_STYLES
+  } from '../../../shared/constants/element-constants';
 
 @Component({
   selector: 'app-drag-n-drop',
@@ -36,9 +42,10 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.initElements = [ ...this.constInitElements ];
-    this.store.select(getFormItems).pipe(takeUntil(this.ngUndestroy$)).subscribe(value => {
-      this.formElements = [...value.key.formItems];
-    });
+    this.store.select(getFormItems).pipe(
+      takeUntil(this.ngUndestroy$),
+      map( v => v.key.formItems)
+    ).subscribe( value => this.formElements = [ ...value ]);
   }
 
   drop(event: CdkDragDrop<object[]>): void {
@@ -50,7 +57,7 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      this.formElements[event.currentIndex].id = `${this.formElements[event.currentIndex].name}-${ Date.now() }`;
+      this.formElements[event.currentIndex].id = `${ this.formElements[event.currentIndex].name }-${ Date.now() }`;
     }
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
     this.cdr.detectChanges();
@@ -63,6 +70,7 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
+    localStorage.clear();
     this.ngUndestroy$.next(null);
     this.ngUndestroy$.complete();
   }

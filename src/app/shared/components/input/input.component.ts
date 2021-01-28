@@ -1,7 +1,7 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NameValueInterface} from '../../models/name-value-interface';
-import {IStyles} from '../../models/i-styles';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NameValueInterface } from '../../models/name-value-interface';
+import { IStyles } from '../../models/i-styles';
 
 @Component({
   selector: 'app-input',
@@ -32,7 +32,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor() {
   }
 
   // tslint:disable-next-line:variable-name
@@ -63,7 +63,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   }
 
   addStyle(): IStyles {
-    const styles: IStyles = {};
+    const styles = {};
     if (this.type === 'form') {
       Object.keys(this.element.styles).forEach((key, index) => {
         styles[key] = this.element.styles[key].value + this.element.styles[key].units;

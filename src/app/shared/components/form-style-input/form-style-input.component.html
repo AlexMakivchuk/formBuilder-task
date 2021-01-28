@@ -14,17 +14,15 @@
   <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
 
   <div class="formControl">
-    <div>border </div>
+    <div>border</div>
     <input [formControlName]="'border'">
-    <span> px</span>
+    <span> px </span>
+    <select [formControlName]="'borderStyle'">
+      <option *ngFor="let style of borderStyles" [value]="style" >{{ style }}</option>
+    </select>
+    <input type="color" class="color" [formControlName]="'borderColor'">
   </div>
   <p *ngIf="form.get('border').touched && form.get('border').invalid">Must Be A Number</p>
-
-  <div class="formControl">
-    <div>borderCollor </div>
-    <input type="color" [formControlName]="'borderColor'">
-    <span> px</span>
-  </div>
 
   <div class="formControl">
     <div>borderRadius </div>
@@ -32,16 +30,15 @@
     <span> px</span>
   </div>
 
-
   <div class="formControl">
     <div>margin </div><input [formControlName]="'margin'"><span> px</span>
   </div>
-  <p *ngIf="form.get('border').touched && form.get('margin').invalid">Must Be A Number</p>
+  <p *ngIf="form.get('margin').touched && form.get('margin').invalid">Must Be A Number</p>
 
   <div class="formControl">
     <div>padding </div><input [formControlName]="'padding'"><span> px</span>
   </div>
-  <p *ngIf="form.get('border').touched && form.get('padding').invalid">Must Be A Number</p>
+  <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
   <div class="formControl">
     <div>label </div><input [formControlName]="'label'"><span> px</span>

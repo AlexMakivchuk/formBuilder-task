@@ -43,14 +43,18 @@ export class ExpansionPanelComponent implements OnInit {
       width: [this.element.styles.width?.value, [Validators.required, this.isNumberValidator]],
       height: [this.element.styles.height?.value, [Validators.required, this.isNumberValidator]],
       border: [this.element.styles.border?.value, [Validators.required, this.isNumberValidator]],
-      borderColor: [this.element.styles.borderColor?.value, [Validators.required]],
+      borderStyle: [this.element.styles.borderStyle?.value],
+      borderColor: [this.element.styles.borderColor?.value],
       borderRadius: [this.element.styles.borderRadius?.value, [Validators.required, this.isNumberValidator]],
+     // fontWeight: [this.element.styles.fontWeight?.value, [Validators.required, this.isNumberValidator]],
+     // fontSize: [this.element.styles.fontSize?.value, [Validators.required, this.isNumberValidator]],
       margin: [this.element.styles.margin?.value, [Validators.required, this.isNumberValidator]],
       padding: [this.element.styles.padding?.value, [Validators.required, this.isNumberValidator]],
       label: [this.element.styles.label?.value],
       placeholder: [this.element.styles.placeholder?.value],
       value: [this.element.styles.value?.value],
       checked: [this.element.styles.checked?.value],
+      color: [this.element.styles.color?.value],
     });
   }
 

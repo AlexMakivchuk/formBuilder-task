@@ -9,7 +9,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import {reducers} from './core/reducers';
+import { reducers } from './core/reducers';
+import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -20,13 +23,15 @@ import {reducers} from './core/reducers';
     BrowserModule,
     CoreModule,
     SharedModule,
+    AuthModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    HttpClientModule
   ],
   exports: [
-
   ],
   providers: [
   ],

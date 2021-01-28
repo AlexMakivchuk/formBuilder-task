@@ -18,6 +18,8 @@ import { FormStyleButtonComponent } from './components/form-style-button/form-st
 import { FormStyleSelectComponent } from './components/form-style-select/form-style-select.component';
 import { FormStyleCheckboxComponent } from './components/form-style-checkbox/form-style-checkbox.component';
 import { FormStyleTextareaComponent } from './components/form-style-textarea/form-style-textarea.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -44,15 +46,23 @@ import { FormStyleTextareaComponent } from './components/form-style-textarea/for
     MatCheckboxModule,
     MatButtonModule,
     MatExpansionModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    DragDropModule,
+    MatIconModule,
   ],
   exports: [
     InputComponent,
     SelectComponent,
     CheckboxComponent,
     ButtonComponent,
-    ExpansionPanelComponent
+    ExpansionPanelComponent,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
+    DragDropModule,
   ]
 
 })
