@@ -1,6 +1,8 @@
-import { NameValueInterface } from '../../shared/models/name-value-interface';
 import { createReducer, createSelector, on } from '@ngrx/store';
 import * as actions from 'src/app/core/actions';
+
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+
 
 export interface KeyState {
   formItems: NameValueInterface[];

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormStyleInputComponent } from './form-style-input.component';
+import { FormStyleInputComponent } from 'src/app/core/components/expansion-panel/components/form-style-input/form-style-input.component';
 
 describe('FormStyleInputComponent', () => {
   let component: FormStyleInputComponent;

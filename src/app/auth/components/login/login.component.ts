@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../../shared/services/user.service';
-import {User} from '../../../shared/models/user';
-import {Message} from '../../../shared/models/message';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
+
+import { UserService } from 'src/app/shared/services/user.service';
+import { Message } from 'src/app/shared/models/message';
 
 
 @Component({
@@ -27,33 +28,21 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.form = new FormGroup( {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null,  [Validators.required, Validators.minLength(6)])
-
     });
   }
 
   onSubmit(): void {
     const formData = this.form.value;
     if (this.form.valid) {
-      this.userService.getUserByEmail(formData.email).subscribe(
-        (value: User) => {
-          if (value) {
-            if (value.password === this.form.controls[`password`].value) {
-              localStorage.setItem('user', JSON.stringify(value));
-              this.router.navigate(['/form-builder']);
-            } else {
-              this.showMessage({
-                text : 'Пароль не верный',
-                type : 'danger'
-              });
-            }
-          } else {
-            this.showMessage({
-              text: 'Такого пользователя не существует',
-              type: 'danger'
-            });
-          }
-        }
-      );
+      this.userService.getUserToken(formData).subscribe(
+        (token) => {
+          localStorage.setItem('token', JSON.stringify(token));
+          this.router.navigate(['/form-builder']);
+        },
+         (error) => this.showMessage({
+          text: error.error,
+          type: 'danger'
+        }));
     }
   }
 

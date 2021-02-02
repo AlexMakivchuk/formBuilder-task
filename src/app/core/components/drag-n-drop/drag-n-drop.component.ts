@@ -1,18 +1,33 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { CdkDragDrop, CdkDragPlaceholder, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Store } from '@ngrx/store';
-import { getFormItems, State } from '../../reducers';
-import * as actions from '../../actions';
-import { NameValueInterface } from '../../../shared/models/name-value-interface';
-import {Observable, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  BUTTON_STYLES,
-  CHECKBOX_STYLES,
-  CONST_OPTIONS,
-  INPUT_STYLES,
-  SELECT_STYLES
-  } from '../../../shared/constants/element-constants';
+    CdkDragDrop,
+    CdkDragPlaceholder,
+    CdkDropList,
+    moveItemInArray,
+    transferArrayItem
+  } from '@angular/cdk/drag-drop';
+import { Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
+import { first, map, takeUntil } from 'rxjs/operators';
+import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
+
+import {
+    BUTTON_STYLES,
+    CHECKBOX_STYLES,
+    CONST_OPTIONS,
+    INPUT_STYLES,
+    SELECT_STYLES,
+    TEXTAREA_STYLES
+  } from 'src/app/shared/constants/element-constants';
+import { getFormItems, State } from 'src/app/core/reducers';
+import * as actions from 'src/app/core/actions';
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { FormBuilderService } from 'src/app/shared/services/form-builder.service';
+import { FormBuilderModel } from 'src/app/shared/models/form-builder.model';
+import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-drag-n-drop',
@@ -22,30 +37,71 @@ import {
 export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public ngUndestroy$ = new Subject<any>();
-
+  public builder: FormBuilderModel;
   public formElements: NameValueInterface[];
+  public form = new FormGroup({});
+  public dragNDropType = 'form';
+  public names = EElementNames;
+  public disabled = false;
 
   constInitElements: NameValueInterface[] = [
-    { name: 'input', value: 'input', type: '', styles: {...INPUT_STYLES} },
-    { name: 'select', value: 'select', type: '', styles: {...SELECT_STYLES}, options: [...CONST_OPTIONS]},
-    { name: 'checkbox', value: 'checkbox', type: '', styles: {...CHECKBOX_STYLES} },
-    { name: 'button', value: 'button', type: 'basic', styles: {...BUTTON_STYLES} },
-    { name: 'button', value: 'button', type: 'primary', styles: {...BUTTON_STYLES} }
+    { name: EElementNames.input, value: 'input', type: '', styles: {...INPUT_STYLES} },
+    { name: EElementNames.select, value: 'select', type: '', styles: {...SELECT_STYLES}, options: [...CONST_OPTIONS]},
+    { name: EElementNames.checkbox, value: 'checkbox', type: '', styles: {...CHECKBOX_STYLES} },
+    { name: EElementNames.button, value: 'button', type: 'basic', styles: {...BUTTON_STYLES} },
+    { name: EElementNames.button, value: 'button', type: 'primary', styles: {...BUTTON_STYLES} },
+    { name: EElementNames.textarea, value: 'textarea', type: '', styles: {...TEXTAREA_STYLES} }
   ];
   initElements = [];
 
   constructor(
+    private router: Router,
     private cdr: ChangeDetectorRef,
-    private store: Store<State>
-  ) {
-  }
+    private store: Store<State>,
+    private formBuilderService: FormBuilderService,
+  ) { }
 
   ngOnInit(): void {
     this.initElements = [ ...this.constInitElements ];
-    this.store.select(getFormItems).pipe(
-      takeUntil(this.ngUndestroy$),
-      map( v => v.key.formItems)
-    ).subscribe( value => this.formElements = [ ...value ]);
+    const id = this.getFormBuilderId();
+    if (id) {
+      this.formBuilderService.getFormBuilderById(id)
+        .pipe(first()).subscribe(value => {
+          if (value) {
+            this.store.dispatch(actions.updateFormItem(
+              { payload: JSON.parse(JSON.stringify(value.builderArray)) }
+              ));
+            this.builder = value;
+          }
+          this.store.select(getFormItems).pipe(
+            takeUntil(this.ngUndestroy$),
+            map( v => v.key.formItems))
+            .subscribe( elements => {
+              this.formElements = [...elements];
+              this.buildForm(this.formElements);
+            });
+      } );
+    }
+  }
+
+  buildForm(controls: NameValueInterface[]): void {
+    controls.forEach(el => {
+      switch (el.name) {
+        case EElementNames.input:
+          this.form.addControl(el.id, new FormControl('', [Validators.required]));
+          break;
+        case EElementNames.checkbox:
+          this.form.addControl(el.id, new FormControl(false, [Validators.requiredTrue]));
+          break;
+        case EElementNames.textarea:
+          this.form.addControl(el.id, new FormControl('', [Validators.required]));
+          break;
+        case EElementNames.select:
+          this.form.addControl(el.id, new FormControl(el.options[0].value, [Validators.required]));
+          break;
+      }
+    });
+
   }
 
   drop(event: CdkDragDrop<object[]>): void {
@@ -62,6 +118,7 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
     this.cdr.detectChanges();
   }
+
   ngAfterViewInit(): void {
   }
 
@@ -69,10 +126,42 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
     return false;
   }
 
+  delElement(index: number): void {
+    this.formElements.splice(index, 1);
+    this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
+  }
+
+  saveForm(): void {
+    if ( this.builder ) {
+      this.builder.builderArray = this.formElements;
+      this.formBuilderService.saveFormBuilder(this.builder).subscribe();
+    } else {
+      const builder: FormBuilderModel = {
+        userId: this.getFormBuilderId(),
+        builderArray: [...this.formElements]
+      };
+      this.formBuilderService.addFormBuilder(builder).subscribe();
+    }
+  }
+
+  getFormBuilderId(): number{
+    const obj = jwt_decode(localStorage.getItem('token'));
+    // @ts-ignore
+    return obj ? obj.sub : null ;
+  }
+
   ngOnDestroy(): void {
+    this.saveForm();
     localStorage.clear();
     this.ngUndestroy$.next(null);
     this.ngUndestroy$.complete();
   }
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+    console.log(this.form.value);
+  }
+
+
 
 }

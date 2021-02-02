@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../shared/services/user.service';
-import { User } from '../../../shared/models/user';
-import { Message } from '../../../shared/models/message';
+
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/models/user';
+import { Message } from 'src/app/shared/models/message';
 
 @Component({
   selector: 'app-registration',
@@ -33,22 +34,19 @@ export class RegistrationComponent implements OnInit {
   onSubmit(): void {
     this.user = this.form.value;
     if (this.form.valid) {
-      this.userService.getUserIdByEmail(this.user.email)
-        .subscribe(value => {
-        if (!value) {
-          this.userService.createNewUser(this.user).subscribe((v) => {
-            this.showMessage({
-              text: 'Пользователь создан',
-              type: '-'
-            });
-          });
-        } else {
+      this.userService.createNewUser(this.user)
+        .subscribe((v) => {
           this.showMessage({
-            text: 'Такой пользователь существует',
-            type: 'danger'
+            text: 'User registred',
+            type: '-'
           });
-        }
-      });
+        },
+          (err) => {
+            this.showMessage({
+              text: err.error,
+              type: 'danger'
+            });
+        });
     }
   }
 

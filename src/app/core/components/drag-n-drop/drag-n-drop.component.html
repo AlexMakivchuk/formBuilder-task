@@ -12,12 +12,66 @@
         [cdkDropListConnectedTo]="[initElementsList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-            <app-form-element *ngFor="let element of formElements; index as i"
-                              cdkDrag
+        <form (submit)="onSubmit($event)" [formGroup]="form">
+          <div class="form-element mh-30" cdkDrag *ngFor="let element of formElements; index as i">
+            <div class="element">
+
+              <div [ngSwitch]="element.name" style="margin: 10px; text-align: center">
+                <div *ngSwitchCase="names.select">
+                  <app-select [formControlName]="element.id"
                               [element]="element"
-                              [index]="i"
-                              [dragNDropType]="'form'">
-            </app-form-element>
+                              [type]="dragNDropType"
+                              [disabled]="disabled">
+
+                  </app-select>
+                </div>
+                <div *ngSwitchCase="names.input">
+                  <app-input [formControlName]="element.id"
+                             [element]="element"
+                             [type]="dragNDropType"
+                             [disabled]="disabled"
+                  >
+                  </app-input>
+                </div>
+                <span *ngSwitchCase="names.checkbox">
+                  <label for="{{element.id}}">{{element.styles.label.value}}</label>
+                  <input [formControlName]="element.id"
+                         type="checkbox"
+                         id="{{element.id}}"
+                         [disabled]="disabled">
+                </span>
+                <span *ngSwitchCase="names.button">
+                  <app-button [element]="element"
+                              [type]="dragNDropType"
+                              [disabled]="form.invalid">
+                  </app-button>
+                </span>
+                <span *ngSwitchCase="names.textarea">
+                  <app-textarea [formControlName]="element.id"
+                                [element]="element"
+                                [type]="dragNDropType"
+                                [disabled]="disabled">
+                  </app-textarea>
+                </span>
+              </div>
+            </div>
+            <div class="relative clear-button">
+              <button class="absolute"
+                      type="button"
+                      mat-button
+                      matSuffix
+                      mat-icon-button
+                      aria-label="Clear"
+                      (click)="delElement(i)"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="save-form-button">
+        <app-button [buttonType]="'basic'" [click]="'save form'" (save)="saveForm()" ></app-button>
       </div>
     </div>
     <div class="example-container">
@@ -30,10 +84,10 @@
         [cdkDropListEnterPredicate]="noReturnPredicate"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let element of constInitElements" cdkDrag>
-            <app-form-element [element]="element" [dragNDropType]="'const'">
-            </app-form-element>
-          </div>
+        <div class="example-box" *ngFor="let element of constInitElements" cdkDrag>
+          <app-form-element [element]="element" [dragNDropType]="'const'">
+          </app-form-element>
+        </div>
 
       </div>
     </div>

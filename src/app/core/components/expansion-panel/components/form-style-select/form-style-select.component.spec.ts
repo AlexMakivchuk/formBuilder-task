@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormStyleSelectComponent } from './form-style-select.component';
+import { FormStyleSelectComponent } from 'src/app/core/components/expansion-panel/components/form-style-select/form-style-select.component';
 
 describe('FormStyleSelectComponent', () => {
   let component: FormStyleSelectComponent;

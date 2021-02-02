@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormStyleTextareaComponent } from './form-style-textarea.component';
+import { FormStyleTextareaComponent } from 'src/app/core/components/expansion-panel/components/form-style-textarea/form-style-textarea.component';
 
 describe('FormStyleTextareaComponent', () => {
   let component: FormStyleTextareaComponent;

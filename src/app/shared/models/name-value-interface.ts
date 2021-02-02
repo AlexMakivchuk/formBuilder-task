@@ -1,4 +1,4 @@
-import { IStyles } from './i-styles';
+import { IStyles } from 'src/app/shared/models/i-styles';
 
 export interface NameValueInterface {
   name: string;

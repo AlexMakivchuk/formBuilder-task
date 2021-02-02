@@ -1,4 +1,4 @@
-import {NameValueInterface} from './name-value-interface';
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 
 export interface FormBuilderModel {
   id?: number;

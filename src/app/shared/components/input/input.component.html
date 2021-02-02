@@ -6,8 +6,8 @@
             class="input"
             autocomplete="off"
             [disabled]="disabled"
-            value="{{element.styles.value.value}}"
             [ngStyle]="addStyle()"
+            [(ngModel)]="value"
             placeholder="{{element.styles.placeholder.value}}">
     <mat-hint class="error" *ngIf="hasError && submited">
       <span>Error, required input</span>

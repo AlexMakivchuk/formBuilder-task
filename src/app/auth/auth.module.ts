@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth.component';
-import { SharedModule } from '../shared/shared.module';
-import { AuthRoutingModule } from './auth-routing.module';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { LoginComponent } from './components/login/login.component';
+
+import { AuthComponent } from 'src/app/auth/auth.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
+import { RegistrationComponent } from 'src/app/auth/components/registration/registration.component';
+import { LoginComponent } from 'src/app/auth/components/login/login.component';
 
 
 @NgModule({

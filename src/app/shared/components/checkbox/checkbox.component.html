@@ -1,2 +1,2 @@
 <label for="{{element.id}}">{{element.styles.label.value}}</label>
-<input type="checkbox" id="{{element.id}}" [disabled]="disabled" (change)="change()" [checked]="checked">
+<input type="checkbox" id="{{element.id}}" [disabled]="disabled" [(ngModel)]="value">

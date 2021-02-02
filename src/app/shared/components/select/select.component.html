@@ -1,6 +1,6 @@
   <select id="{{element.id}}"
           [disabled]="disabled"
-          [(ngModel)]="_value"
+          [(ngModel)]="value"
           (change)="change()"
           [ngStyle]="addStyle()">
     <option *ngFor="let option of options; index as i" [value]="option.value">{{option.name}}</option>

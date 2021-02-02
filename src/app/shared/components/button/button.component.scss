@@ -34,6 +34,9 @@ button {
   height: 40px;
   border-radius: 20px;
   width: 80px;
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .basic{
@@ -50,5 +53,9 @@ button {
 
   &:active {
     background-color: #4b64a3;
+  }
+  &:disabled {
+    background-color: #30405c;
+
   }
 }

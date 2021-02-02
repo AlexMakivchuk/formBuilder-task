@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormStyleButtonComponent } from './form-style-button.component';
+import { FormStyleButtonComponent } from 'src/app/core/components/expansion-panel/components/form-style-button/form-style-button.component';
 
 describe('FormStyleButtonComponent', () => {
   let component: FormStyleButtonComponent;

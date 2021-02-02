@@ -32,5 +32,11 @@
                              [element]="element"
     >
     </app-form-style-button>
+    <app-form-style-textarea *ngIf="element.name === 'textarea'"
+                             [form]="form"
+                             (submit)="OnSubmit()"
+                             [element]="element"
+    >
+    </app-form-style-textarea>
   </mat-expansion-panel>
 </mat-accordion>

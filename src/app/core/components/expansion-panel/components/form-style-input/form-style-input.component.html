@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="formControl" >
+    <div>width </div>
+    <input [formControlName]="'width'">
+    <span> px</span>
+  </div>
+  <p *ngIf="form.get('width').touched && form.get('width').invalid">Must Be A Number</p>
+
+  <div class="formControl">
+    <div>height </div>
+    <input [formControlName]="'height'">
+    <span> px</span>
+  </div>
+  <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
+
+  <div class="formControl">
+    <div>border</div>
+    <input [formControlName]="'border'">
+    <span> px </span>
+    <select [formControlName]="'borderStyle'">
+      <option *ngFor="let style of borderStyles" [value]="style" >{{ style }}</option>
+    </select>
+    <input type="color" class="color" [formControlName]="'borderColor'">
+  </div>
+  <p *ngIf="form.get('border').touched && form.get('border').invalid">Must Be A Number</p>
+
+  <div class="formControl">
+    <div>borderRadius </div>
+    <input [formControlName]="'borderRadius'">
+    <span> px</span>
+  </div>
+
+  <div class="formControl">
+    <div>margin </div><input [formControlName]="'margin'"><span> px</span>
+  </div>
+  <p *ngIf="form.get('margin').touched && form.get('margin').invalid">Must Be A Number</p>
+
+  <div class="formControl">
+    <div>padding </div><input [formControlName]="'padding'"><span> px</span>
+  </div>
+  <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
+
+  <div class="formControl">
+    <div>label </div><input [formControlName]="'label'">
+  </div>
+
+  <div class="formControl">
+    <div>placeholder </div><input [formControlName]="'placeholder'">
+  </div>
+
+  <br>
+  <button class="submit" type="submit">submit</button>
+</form>

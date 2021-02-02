@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NameValueInterface } from '../../models/name-value-interface';
-import { IStyles } from '../../models/i-styles';
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { IStyles } from 'src/app/shared/models/i-styles';
 
 @Component({
   selector: 'app-input',
@@ -36,7 +36,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   }
 
   // tslint:disable-next-line:variable-name
-  _value: any = 'input';
+  _value: any = '';
   onChange = (value) => {
   }
   onTouched = () => {

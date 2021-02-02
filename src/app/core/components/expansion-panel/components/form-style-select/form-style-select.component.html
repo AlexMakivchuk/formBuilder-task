@@ -56,21 +56,33 @@
 </mat-accordion>
 
 <form [formGroup]="formOptions" (ngSubmit)="onSubmitOptions()">
-  <div formArrayName="options">
-    <div class="formArrayInput" *ngFor="let option of options; index as i">
-      <input formControlName="{{i}}">
-      <button (click)="delControl(i)"
-              type="button"
-              mat-button
-              matSuffix
-              mat-icon-button
-              aria-label="Clear">
-        <mat-icon>close</mat-icon>
-      </button>
+  <div>
+    <div class="formArrayInput" [formGroupName]="'first'">
+      <span>name
+        <input [formControlName]="'name'">
+      </span>
+      <span>value
+        <input [formControlName]="'value'">
+      </span>
     </div>
   </div>
-  <button type="submit">save options</button>
+  <div class="formArrayInput" [formGroupName]="'second'">
+      <span>name
+        <input [formControlName]="'name'">
+      </span>
+    <span>value
+        <input [formControlName]="'value'">
+      </span>
+  </div>
+  <div class="formArrayInput" [formGroupName]="'third'">
+      <span>name
+        <input [formControlName]="'name'">
+      </span>
+    <span>value
+        <input [formControlName]="'value'">
+      </span>
+  </div>
+  <button type="submit" [disabled]="formOptions.invalid">save options</button>
 </form>
 <br>
-<button (click)="addControl()" [disabled]="disableOptionButton">add option ({{6 - options.length}})</button>
 

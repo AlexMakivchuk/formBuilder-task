@@ -11,8 +11,6 @@ export interface IStyles {
   padding?: ValueUnits;
   label?: ValueUnits;
   placeholder?: ValueUnits;
-  value?: ValueUnits;
-  checked?: ValueUnits;
   color?: ValueUnits;
 }
 

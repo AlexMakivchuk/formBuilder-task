@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormStyleCheckboxComponent } from './form-style-checkbox.component';
+import { FormStyleCheckboxComponent } from 'src/app/core/components/expansion-panel/components/form-style-checkbox/form-style-checkbox.component';
 
 describe('FormStyleCheckboxComponent', () => {
   let component: FormStyleCheckboxComponent;

@@ -1,14 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NameValueInterface } from '../../models/name-value-interface';
-import { IStyles } from '../../models/i-styles';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { IStyles } from 'src/app/shared/models/i-styles';
 
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true
+    }
+  ]
 })
-export class SelectComponent implements OnInit {
+export class SelectComponent implements OnInit, ControlValueAccessor {
   options = [];
   @Input() disabled: boolean;
   @Input() inputClass;
@@ -30,7 +39,7 @@ export class SelectComponent implements OnInit {
   }
 
   // tslint:disable-next-line:variable-name
-  _value: any = 'input';
+  _value: any;
   onChange = (value) => {
   }
   onTouched = () => {

@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angu
 import { FormGroup } from '@angular/forms';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
-import { BORDER_STYLES } from '../../constants/element-constants';
+import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
 
 @Component({
   selector: 'app-form-style-input',

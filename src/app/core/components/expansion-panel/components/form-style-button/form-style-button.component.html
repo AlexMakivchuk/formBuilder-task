@@ -14,6 +14,10 @@
   <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
 
   <div class="formControl">
+    <div>color text </div><input type="color" [formControlName]="'color'">
+  </div>
+
+  <div class="formControl">
     <div>border</div>
     <input [formControlName]="'border'">
     <span> px </span>
@@ -41,17 +45,10 @@
   <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
   <div class="formControl">
-    <div>label </div><input [formControlName]="'label'"><span> px</span>
-  </div>
-
-  <div class="formControl">
-    <div>placeholder </div><input [formControlName]="'placeholder'"><span> px</span>
-  </div>
-
-  <div class="formControl">
-    <div>value </div><input [formControlName]="'value'"><span> px</span>
+    <div>action(save, click...) </div><input [formControlName]="'label'">
   </div>
 
   <br>
   <button class="submit" type="submit">submit</button>
 </form>
+

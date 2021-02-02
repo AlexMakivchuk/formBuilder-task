@@ -1,12 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NameValueInterface } from '../../models/name-value-interface';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { BUTTON_STYLES, CHECKBOX_STYLES, INPUT_STYLES, SELECT_STYLES } from '../../constants/element-constants';
-import * as actions from '../../../core/actions';
 import { Store } from '@ngrx/store';
-import { getFormItems, State } from '../../../core/reducers';
 import { first } from 'rxjs/operators';
-import { EElementNames } from '../../enums/e-element-names.enum';
+
+import { BUTTON_STYLES, CHECKBOX_STYLES, INPUT_STYLES, SELECT_STYLES, TEXTAREA_STYLES } from 'src/app/shared/constants/element-constants';
+import * as actions from 'src/app/core/actions';
+import { getFormItems, State } from 'src/app/core/reducers';
+import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { IStyles } from 'src/app/shared/models/i-styles';
+
 
 @Component({
   selector: 'app-expansion-panel',
@@ -17,14 +20,13 @@ export class ExpansionPanelComponent implements OnInit {
   panelOpenState = false;
   @Input() element: NameValueInterface;
   public form: FormGroup;
-  styles = {};
+  styles: IStyles = {};
   formItems: NameValueInterface[];
 
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<State>
     ) {
-
   }
 
   ngOnInit(): void {
@@ -52,8 +54,6 @@ export class ExpansionPanelComponent implements OnInit {
       padding: [this.element.styles.padding?.value, [Validators.required, this.isNumberValidator]],
       label: [this.element.styles.label?.value],
       placeholder: [this.element.styles.placeholder?.value],
-      value: [this.element.styles.value?.value],
-      checked: [this.element.styles.checked?.value],
       color: [this.element.styles.color?.value],
     });
   }
@@ -71,13 +71,17 @@ export class ExpansionPanelComponent implements OnInit {
       Object.keys(this.form.controls).forEach( (key, index) => {
         const controll = this.form.get(key);
         if (controll.value) {
-          this.styles[key].value = controll.value;
+          this.styles[key].value = this.styles[key]?.value ? controll.value : null;
         }
       });
-      this.formItems.map(elem => elem.id === this.element.id ? elem.styles = {...this.styles} : elem);
+      this.formItems.map(elem => {
+        if ( elem.id === this.element.id) {
+          elem.styles = JSON.parse(JSON.stringify(this.styles));
+        }
+        return elem;
+      });
       this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formItems)) }));
     }
-
   }
 
   public initStyles(): void {
@@ -86,7 +90,7 @@ export class ExpansionPanelComponent implements OnInit {
       case EElementNames.button: this.styles = JSON.parse(JSON.stringify(BUTTON_STYLES)); break;
       case EElementNames.checkbox: this.styles = JSON.parse(JSON.stringify(CHECKBOX_STYLES)); break;
       case EElementNames.select: this.styles = JSON.parse(JSON.stringify(SELECT_STYLES)); break;
-
+      case EElementNames.textarea: this.styles = JSON.parse(JSON.stringify(TEXTAREA_STYLES)); break;
     }
   }
 

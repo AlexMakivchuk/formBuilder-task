@@ -53,3 +53,19 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.form-element {
+  display: flex;
+}
+.element {
+  width: 90%;
+}
+.clear-button {
+  margin-top: 10px;
+  width: 10%;
+}
+
+.save-form-button {
+  margin-top: 15px;
+  text-align: center;
+}

@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NameValueInterface } from '../../models/name-value-interface';
-import { IStyles } from '../../models/i-styles';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { IStyles } from 'src/app/shared/models/i-styles';
 
 @Component({
   selector: 'app-button',
@@ -11,6 +12,9 @@ export class ButtonComponent implements OnInit {
   @Input() element: NameValueInterface;
   @Input() disabled: boolean;
   @Input() type: string;
+  @Input() click: string;
+  @Input() buttonType: string;
+  @Output() save = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -24,6 +28,10 @@ export class ButtonComponent implements OnInit {
       });
       return styles;
     }
+  }
+
+  saveForm(): void {
+    this.save.emit();
   }
 
 }

@@ -1,38 +1,319 @@
 {
   "users": [
     {
-      "email": "alexmakivchuk@gmail.com",
-      "password": "111111",
-      "name": "Alex",
-      "surname": "Makivchuk",
-      "agree": true,
-      "status": "admin",
-      "id": 1
-    },
-    {
       "email": "aaaaa@aaa.aaa",
-      "password": "aaaaaa",
-      "name": "aaa",
+      "password": "$2a$10$G/wFLYLrQSiyOPCcApfqVOz3t8CI5Jyiu.SOfLuUYT7AbXTmgoRWa",
+      "name": "aaaaaa",
       "surname": "aaa",
       "agree": true,
       "id": 2
     },
     {
-      "email": "bbbbb@bbb.bbb",
-      "password": "aaaaaa",
-      "name": "aaaa",
-      "surname": "aaaa",
+      "email": "bbbb@bbb.bbb",
+      "password": "$2a$10$LBcFEeuRJPslcmCl2jAUqe.Hp/CM5vMUgeoqufjQwGfMRKn/LQ6Ku",
+      "name": "bbb",
+      "surname": "bbb",
       "agree": true,
       "id": 3
-    },
-    {
-      "email": "aaagaa@aaa.aaa",
-      "password": "aaaaaa",
-      "name": "aaaaa",
-      "surname": "aaaaa",
-      "agree": true,
-      "id": 4
     }
   ],
-  "form-builder": []
+  "form-builder": [
+    {
+      "userId": 2,
+      "id": 1,
+      "builderArray": [
+        {
+          "name": "input",
+          "value": "input",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "50",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "25",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "label",
+              "units": ""
+            },
+            "placeholder": {
+              "value": "placeholder",
+              "units": ""
+            }
+          },
+          "id": "input-1612280176599"
+        },
+        {
+          "name": "input",
+          "value": "input",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "50",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "25",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "label",
+              "units": ""
+            },
+            "placeholder": {
+              "value": "placeholder",
+              "units": ""
+            }
+          },
+          "id": "input-1612273185387"
+        },
+        {
+          "name": "select",
+          "value": "select",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "50",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "25",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            }
+          },
+          "options": [
+            {
+              "name": "option-name-0",
+              "value": "option-0"
+            },
+            {
+              "name": "option-name-1",
+              "value": "option-1"
+            },
+            {
+              "name": "option-name-2",
+              "value": "option-2"
+            }
+          ],
+          "id": "select-1612280183499"
+        },
+        {
+          "name": "textarea",
+          "value": "textarea",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "100",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "5",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "label",
+              "units": ""
+            },
+            "placeholder": {
+              "value": "placeholder",
+              "units": ""
+            }
+          },
+          "id": "textarea-1612280193531"
+        },
+        {
+          "name": "checkbox",
+          "value": "checkbox",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "1",
+              "units": "px"
+            },
+            "height": {
+              "value": "1",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderRadius": {
+              "value": "1",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "checkbox",
+              "units": ""
+            },
+            "color": {
+              "value": "black",
+              "units": ""
+            }
+          },
+          "id": "checkbox-1612280188915"
+        },
+        {
+          "name": "button",
+          "value": "button",
+          "type": "primary",
+          "styles": {
+            "width": {
+              "value": "120",
+              "units": "px"
+            },
+            "height": {
+              "value": "40",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "20",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "click",
+              "units": ""
+            },
+            "color": {
+              "value": "",
+              "units": ""
+            }
+          },
+          "id": "button-1612280362874"
+        }
+      ]
+    },
+    {
+      "userId": "3",
+      "builderArray": [],
+      "id": 2
+    }
+  ]
 }

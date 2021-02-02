@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { Store } from '@ngrx/store';
 import { first, map } from 'rxjs/operators';
-import { getFormItems, State } from '../../../core/reducers';
-import * as actions from '../../../core/actions';
-import { BORDER_STYLES } from '../../constants/element-constants';
+import { getFormItems, State } from 'src/app/core/reducers';
+import * as actions from 'src/app/core/actions';
+import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
 
 @Component({
   selector: 'app-form-style-select',
@@ -38,42 +38,39 @@ export class FormStyleSelectComponent implements OnInit {
   }
 
   public onSubmitOptions(): void {
-    this.optionControls.value.forEach( ( e, i ) => {
-      this.options[i].name = e;
+    const optArray = [];
+    Object.keys(this.formOptions.value).forEach(key => {
+      optArray.push(this.formOptions.get(key).value);
     });
+
     this.store.select(getFormItems)
       .pipe(
         first(),
         map((value) => {
           this.formItems = JSON.parse(JSON.stringify(value.key.formItems));
-          this.formItems.map(el => el.id === this.element.id
-            ? el.options = [...this.options]
-            : el.options );
+          this.formItems.map(el => el.id === this.element.id ?
+            el.options = [...optArray] :
+            el.options );
           this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formItems)) }));
         }))
       .subscribe();
   }
 
-  get optionControls(): FormArray {
-    return this.formOptions.get('options') as FormArray;
-  }
-
-  public addControl(): void {
-    this.options.push({ value: `${Date.now()}`, name: `option-${Date.now()}` } );
-    this.optionControls.push(new FormControl(`option-${Date.now()}`));
-    this.disableOptionButton = this.options.length === 6;
-  }
-
-  public delControl(index: number): void {
-   // this.options.splice(index, 1);
-   // let int = parseInt(val.replace('option-', ''), 10);
-    this.optionControls.removeAt(index);
-    this.options.splice(index, 1);
-  }
-
   private buildForm(): void {
     this.formOptions = new FormGroup({
-      options: new FormArray([...this.options.map(value => new FormControl(value.name))])
+      first: new FormGroup({
+          name: new FormControl(this.options[0].name),
+          value: new FormControl(this.options[0].value),
+        }),
+      second: new FormGroup({
+        name: new FormControl(this.options[1].name),
+        value: new FormControl(this.options[1].value),
+      }),
+      third: new FormGroup({
+        name: new FormControl(this.options[2].name),
+        value: new FormControl(this.options[2].value),
+      }),
+
     });
   }
 

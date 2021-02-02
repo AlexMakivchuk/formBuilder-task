@@ -3,12 +3,15 @@
     <app-select [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-select>
   </div>
   <div *ngSwitchCase="names.input">
-    <app-input [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-input>
+    <app-input [formControlName]="element.id" [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-input>
   </div>
   <span *ngSwitchCase="names.checkbox">
     <app-checkbox [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-checkbox>
   </span>
   <span *ngSwitchCase="names.button">
     <app-button [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-button>
+  </span>
+  <span *ngSwitchCase="names.textarea">
+    <app-textarea [element]="element" [type]="dragNDropType" [disabled]="disabled"></app-textarea>
   </span>
 </div>
