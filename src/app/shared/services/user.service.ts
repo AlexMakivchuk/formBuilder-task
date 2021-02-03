@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { User } from 'src/app/shared/models/user';
 import { JsonServerResponse } from 'src/app/shared/models/json-server-response';
 
@@ -13,18 +14,18 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserToken(user): Observable<any> {
+  userLogin(user): Observable<string> {
     return this.http.post(`http://localhost:3000/login`, user)
       .pipe(
-        map( (res: JsonServerResponse) => res ? res.accessToken : null ));
-
+        map( (res: JsonServerResponse) => res.accessToken)
+      );
   }
 
-  createNewUser(user: User): Observable<any> {
+  createNewUser(user: User): Observable<Response> {
     return this.http.post('http://localhost:3000/users', user)
       .pipe(
-        map((response: Response) => response) );
-
+        map((response: Response) => response)
+      );
   }
 
 }

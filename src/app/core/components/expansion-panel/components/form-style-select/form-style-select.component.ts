@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { Store } from '@ngrx/store';
 import { first, map } from 'rxjs/operators';
@@ -20,7 +20,6 @@ export class FormStyleSelectComponent implements OnInit {
   public formOptions: FormGroup;
   options: OptionsNameValue[];
   formItems: NameValueInterface[];
-  disableOptionButton = false;
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
 
@@ -47,7 +46,7 @@ export class FormStyleSelectComponent implements OnInit {
       .pipe(
         first(),
         map((value) => {
-          this.formItems = JSON.parse(JSON.stringify(value.key.formItems));
+          this.formItems = JSON.parse(JSON.stringify(value));
           this.formItems.map(el => el.id === this.element.id ?
             el.options = [...optArray] :
             el.options );

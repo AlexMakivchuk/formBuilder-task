@@ -35,7 +35,7 @@ export class ExpansionPanelComponent implements OnInit {
       .pipe(
         first())
       .subscribe(value => {
-        this.formItems = JSON.parse(JSON.stringify(value.key.formItems));
+        this.formItems = JSON.parse(JSON.stringify(value));
       });
     this.initStyles();
   }

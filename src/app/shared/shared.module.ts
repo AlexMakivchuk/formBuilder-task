@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 import { SelectComponent } from 'src/app/shared/components/select/select.component';
 import { CheckboxComponent } from 'src/app/shared/components/checkbox/checkbox.component';
@@ -37,6 +38,7 @@ import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.c
     ReactiveFormsModule,
     DragDropModule,
     MatIconModule,
+    ReactiveComponentModule
   ],
   exports: [
     InputComponent,
@@ -52,6 +54,7 @@ import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.c
     DragDropModule,
     MatIconModule,
     TextareaComponent,
+    ReactiveComponentModule
   ]
 
 })

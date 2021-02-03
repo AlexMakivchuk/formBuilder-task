@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { reducers } from 'src/app/core/reducers';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { CoreEffects } from 'src/app/core/effects';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CoreEffects]),
     HttpClientModule
   ],
   exports: [

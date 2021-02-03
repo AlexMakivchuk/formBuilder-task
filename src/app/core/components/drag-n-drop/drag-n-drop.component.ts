@@ -1,16 +1,15 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {
     CdkDragDrop,
-    CdkDragPlaceholder,
-    CdkDropList,
     moveItemInArray,
     transferArrayItem
   } from '@angular/cdk/drag-drop';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
-import { first, map, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { first, takeUntil } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import {
     BUTTON_STYLES,
@@ -26,7 +25,6 @@ import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { FormBuilderService } from 'src/app/shared/services/form-builder.service';
 import { FormBuilderModel } from 'src/app/shared/models/form-builder.model';
 import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -74,10 +72,9 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
             this.builder = value;
           }
           this.store.select(getFormItems).pipe(
-            takeUntil(this.ngUndestroy$),
-            map( v => v.key.formItems))
-            .subscribe( elements => {
-              this.formElements = [...elements];
+            takeUntil(this.ngUndestroy$))
+            .subscribe( ( elements ) => {
+              this.formElements = [ ...elements ];
               this.buildForm(this.formElements);
             });
       } );

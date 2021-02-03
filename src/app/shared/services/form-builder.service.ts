@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+
 import { FormBuilderModel } from 'src/app/shared/models/form-builder.model';
 
 @Injectable({
@@ -15,23 +15,18 @@ export class FormBuilderService {
   getFormBuilderById(id: number): Observable<FormBuilderModel> {
     return this.http.get(`http://localhost:3000/form-builder?userId=${id}`)
       .pipe(
-        map((response: Response) => {
-          return response[0] ? response[0] : null;
-        }
+        map((response: Response) => response[0]
       )
     );
   }
 
-  saveFormBuilder(builder: FormBuilderModel): Observable<Response> {
-    return this.http.put(`http://localhost:3000/form-builder/${builder.id}`, builder)
-      .pipe(
-        map((response: Response) => response) );
+  saveFormBuilder(builder: FormBuilderModel): Observable<any> {
+    return this.http.put(`http://localhost:3000/form-builder/${builder.id}`, builder);
 
   }
 
   addFormBuilder(builder: FormBuilderModel): Observable<any> {
-    return this.http.post(`http://localhost:3000/form-builder/`, builder)
-      .pipe(map(value => value));
+    return this.http.post(`http://localhost:3000/form-builder/`, builder);
   }
 
 }

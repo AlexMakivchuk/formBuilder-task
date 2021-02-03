@@ -3,6 +3,6 @@ export interface User {
   password: string;
   name: string;
   surname: string;
-  status: string;
+  status?: string;
   id?: number;
 }
