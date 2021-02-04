@@ -43,7 +43,7 @@
           "type": "",
           "styles": {
             "width": {
-              "value": "250",
+              "value": "200",
               "units": "px"
             },
             "height": {
@@ -59,7 +59,7 @@
               "units": ""
             },
             "borderColor": {
-              "value": "black",
+              "value": "#df6868",
               "units": ""
             },
             "borderRadius": {

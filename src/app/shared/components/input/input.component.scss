@@ -1,17 +1,19 @@
+@import "~src/assets/variables";
+
 p {
   color: rgba(38, 50, 56, 0.82);
   font-size: 18px;
 }
 
 .input {
-  border: 1px solid #d9d9d9;
+  border: 1px solid $color-3;
   min-height: 20px;
   border-radius: 25px;
   padding: 5px;
   min-width: 50px;
 
   &:focus {
-    border: 2px solid black;
+    border: 2px solid $color-1;
   }
 }
 

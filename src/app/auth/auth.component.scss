@@ -1,18 +1,20 @@
+@import "~src/assets/variables";
+
 .auth-content{
   margin-bottom: 20px;
 
 }
 .auth{
-  background: #d2d2d2;
+  background: $text-color-4;
   width: 410px;
-  border:1px solid #808080;
+  border:1px solid $text-color-6;
   border-radius: 5px;
   padding-bottom: 40px;
   box-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
 .auth-header{
   margin-bottom: 20px;
-  background: linear-gradient(to top, #bdbdbd, #8d8d8d);
+  background: linear-gradient(to top, $text-color-3, $text-color-4);
   width: auto;
   height: 55px;
   padding-top: 15px;
@@ -24,10 +26,10 @@
 }
 
 .alert {
-  color: green;
+  color: $text-color-7;
 }
 
 .alert-danger {
-  color: red;
+  color: $text-color-2;
 }
 

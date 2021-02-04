@@ -1,3 +1,5 @@
+@import "~src/assets/variables";
+
 section {
   display: table;
 }
@@ -40,22 +42,23 @@ button {
 }
 
 .basic{
-  background-color: #ffffff;
+  background-color: $bg-color-white;
 
   &:active {
-    background-color: #c1c1c1;
+    background-color: $bg-color-grey;
   }
 }
 
 .primary {
-  background-color: #5485ff;
-  color: white;
+  background-color: $bg-color-blue;
+  color: $text-color-3;
 
   &:active {
-    background-color: #4b64a3;
+    background-color: $bg-color-light-blue;
   }
+
   &:disabled {
-    background-color: #30405c;
+    background-color: $bg-color-dark-blue;
 
   }
 }

@@ -1,3 +1,5 @@
+@import "~src/assets/variables";
+
 .example-container {
   width: auto;
   max-width: 100%;
@@ -12,7 +14,7 @@
   min-width: 33%;
   min-height: 500px;
   height: 100%;
-  background: white;
+  background: $bg-color-white;
   border-radius: 4px;
   overflow: hidden;
   display: block;
