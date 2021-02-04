@@ -26,15 +26,15 @@
 
 .example-box {
   padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
+  border-bottom: solid 1px $color-4;
+  color: $text-color-1;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
-  background: white;
+  background: $bg-color-white;
   font-size: 14px;
 }
 
