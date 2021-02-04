@@ -1,11 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { IStyles } from 'src/app/shared/models/i-styles';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true
+    }
+  ]
 })
 export class CheckboxComponent implements OnInit {
   @Input() element: NameValueInterface;
@@ -41,6 +50,18 @@ export class CheckboxComponent implements OnInit {
 
   public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  addStyle(): IStyles {
+    const styles = {};
+    if (this.type === 'form') {
+      styles[`color`] = this.element.styles.color.value + this.element.styles.color.units;
+      return styles;
+    }
   }
 
 }

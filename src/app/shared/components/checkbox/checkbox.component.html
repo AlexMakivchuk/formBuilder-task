@@ -1,2 +1,2 @@
-<label for="{{element.id}}">{{element.styles.label.value}}</label>
+<span [ngStyle]="addStyle()">{{element.styles.label.value}}</span>
 <input type="checkbox" id="{{element.id}}" [disabled]="disabled" [(ngModel)]="value">

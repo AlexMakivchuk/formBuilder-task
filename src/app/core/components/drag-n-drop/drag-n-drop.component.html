@@ -1,22 +1,21 @@
-<div>
-  <div cdkDropListGroup>
-    <div class="example-container">
+<div class="h_100">
+  <div class="border-example-list" cdkDropListGroup>
+    <div class="example-container border-example-list">
       <app-expansion-panel *ngFor="let element of formElements" [element]="element"></app-expansion-panel>
     </div>
-    <div class="example-container">
-      <h2>Form</h2>
+    <div class="example-container ">
       <div
         cdkDropList
         #formElementsList="cdkDropList"
         [cdkDropListData]="formElements"
         [cdkDropListConnectedTo]="[initElementsList]"
-        class="example-list"
+        class="example-list border_none"
         (cdkDropListDropped)="drop($event)">
         <form (submit)="onSubmit($event)" [formGroup]="form">
           <div class="form-element mh-30" cdkDrag *ngFor="let element of formElements; index as i">
             <div class="element">
 
-              <div [ngSwitch]="element.name" style="margin: 10px; text-align: center">
+              <div [ngSwitch]="element.name" class="align-center m-10">
                 <div *ngSwitchCase="names.select">
                   <app-select [formControlName]="element.id"
                               [element]="element"
@@ -34,11 +33,11 @@
                   </app-input>
                 </div>
                 <span *ngSwitchCase="names.checkbox">
-                  <label for="{{element.id}}">{{element.styles.label.value}}</label>
-                  <input [formControlName]="element.id"
-                         type="checkbox"
-                         id="{{element.id}}"
-                         [disabled]="disabled">
+                  <app-checkbox [formControlName]="element.id"
+                                [element]="element"
+                                [type]="dragNDropType"
+                                [disabled]="disabled"
+                  ></app-checkbox>
                 </span>
                 <span *ngSwitchCase="names.button">
                   <app-button [element]="element"
@@ -73,24 +72,24 @@
       <div class="save-form-button">
         <app-button [buttonType]="'basic'" [click]="'save form'" (save)="saveForm()" ></app-button>
       </div>
+      <div class="align-center">
+        <app-button class="m-10" [click]="'logout'" [buttonType]="'basic'" (save)="onLogOut()"></app-button>
+      </div>
     </div>
     <div class="example-container">
-      <h2>Elements</h2>
       <div
         cdkDropList
         #initElementsList="cdkDropList"
         [cdkDropListData]="initElements"
         [cdkDropListConnectedTo]="[formElementsList]"
         [cdkDropListEnterPredicate]="noReturnPredicate"
-        class="example-list"
+        class="example-list border-example-list"
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let element of constInitElements" cdkDrag>
           <app-form-element [element]="element" [dragNDropType]="'const'">
           </app-form-element>
         </div>
-
       </div>
     </div>
   </div>
-
 </div>

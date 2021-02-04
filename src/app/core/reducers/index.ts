@@ -10,14 +10,14 @@ export interface CoreState {
   formItems: NameValueInterface[];
   userState: User;
   isAuth: boolean;
-  loginError: Message;
+  authMessage: Message;
 }
 
 const initState: CoreState = {
   formItems: [],
   userState: null,
   isAuth: false,
-  loginError: { text: '', type: '' }
+  authMessage: { text: '', type: '' }
 };
 
 export interface State {
@@ -34,12 +34,14 @@ export const reducer = createReducer(
     ...state,
     isAuth: true
   })),
-  on(actions.errorLogin, ( state, error): CoreState => {
-    return {
+  on(actions.logOut,  (state): CoreState => ({
     ...state,
-        loginError: { text: error.error, type: 'danger' }
-    };
-  } ),
+    isAuth: false
+  })),
+  on(actions.messageAuth, (state, { payload } ): CoreState => ({
+    ...state,
+    authMessage: { ...payload }
+  })),
 );
 
 export const reducers = {
@@ -58,7 +60,7 @@ export const getAuthState = createSelector(
   (state: CoreState): boolean => state.isAuth
 );
 
-export const getLoginError = createSelector(
+export const getAuthMessage = createSelector(
   getCoreState,
-  ( state) => state.loginError
+  ( state) => state.authMessage
 );

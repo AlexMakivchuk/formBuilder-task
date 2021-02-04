@@ -15,6 +15,22 @@
       "surname": "bbb",
       "agree": true,
       "id": 3
+    },
+    {
+      "email": "aaaaaa@aaa.aaa",
+      "password": "$2a$10$4Vlirl.hRVKOR4cQxLgZYen6a02Sb75BUOlqUOsdtt7eJ97llgikm",
+      "name": "sdsfsf",
+      "surname": "dwfw",
+      "agree": true,
+      "id": 4
+    },
+    {
+      "email": "aaaaaaa@aaa.aaa",
+      "password": "$2a$10$EyVnIVDriC6P0OSLC9xBSOxmFHOcphSlcvR.gQBU/070WjMrLuJ1S",
+      "name": "ergee",
+      "surname": "rverev",
+      "agree": true,
+      "id": 5
     }
   ],
   "form-builder": [
@@ -170,6 +186,54 @@
             }
           ],
           "id": "select-1612374344430"
+        },
+        {
+          "name": "button",
+          "value": "button",
+          "type": "basic",
+          "styles": {
+            "width": {
+              "value": "120",
+              "units": "px"
+            },
+            "height": {
+              "value": "40",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "20",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "click",
+              "units": ""
+            },
+            "fontColor": {
+              "value": "",
+              "units": ""
+            }
+          },
+          "id": "button-1612445814417"
         }
       ],
       "id": 1

@@ -19,7 +19,6 @@ export class FormStyleCheckboxComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form);
     this.submit.emit(this.element.id);
   }
 }

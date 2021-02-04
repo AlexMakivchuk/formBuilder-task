@@ -149,16 +149,23 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.saveForm();
-    localStorage.clear();
     this.ngUndestroy$.next(null);
     this.ngUndestroy$.complete();
   }
 
   onSubmit(event: Event): void {
     event.preventDefault();
-    console.log(this.form.value);
+    let str = '';
+    Object.keys(this.form.value).forEach(key => {
+      str = str + `${key} : ${this.form.get(key).value}\n`;
+    });
+    alert(str);
   }
 
-
+  onLogOut(): void {
+    this.store.dispatch(actions.logOut());
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 
 }

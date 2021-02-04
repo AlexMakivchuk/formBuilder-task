@@ -1,19 +1,25 @@
 .example-container {
-  width: 400px;
+  width: auto;
   max-width: 100%;
-  min-height: 400px;
-  margin: 0 25px 25px 0;
+  min-width: 30%;
+  height: 100%;
+  min-height: 650px;
   display: inline-block;
   vertical-align: top;
 }
 
 .example-list {
-  border: solid 1px #ccc;
-  min-height: 460px;
+  min-width: 33%;
+  min-height: 500px;
+  height: 100%;
   background: white;
   border-radius: 4px;
   overflow: hidden;
   display: block;
+}
+
+.border-example-list{
+  border: solid 1px #ccc;
 }
 
 .example-box {
@@ -57,9 +63,11 @@
 .form-element {
   display: flex;
 }
+
 .element {
   width: 90%;
 }
+
 .clear-button {
   margin-top: 10px;
   width: 10%;

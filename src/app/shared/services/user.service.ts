@@ -21,10 +21,10 @@ export class UserService {
       );
   }
 
-  createNewUser(user: User): Observable<Response> {
+  createNewUser(user: User): Observable<string> {
     return this.http.post('http://localhost:3000/users', user)
       .pipe(
-        map((response: Response) => response)
+        map((res: JsonServerResponse) => res.accessToken)
       );
   }
 
