@@ -1,15 +1,27 @@
-<div>
-  <label>{{element.styles.label.value}}</label>
+<div *ngIf="element">
+  <div>
+    <label>{{element.styles.label.value}}</label>
+  </div>
+  <input id="{{ element.id }}"
+         class="input"
+         autocomplete="off"
+         [disabled]="disabled"
+         [ngStyle]="addStyle()"
+         [(ngModel)]="value"
+         [placeholder]="element.styles.placeholder.value">
+  <mat-hint class="error" *ngIf="hasError && submited">
+    <span>Error, required input</span>
+  </mat-hint>
 </div>
-<div>
-    <input  id="{{element.id}}"
-            class="input"
-            autocomplete="off"
-            [disabled]="disabled"
-            [ngStyle]="addStyle()"
-            [(ngModel)]="value"
-            placeholder="{{element.styles.placeholder.value}}">
-    <mat-hint class="error" *ngIf="hasError && submited">
-      <span>Error, required input</span>
-    </mat-hint>
-</div>
+
+<span *ngIf="!element">
+  <input id="{{ name }}"
+         class="input"
+         [type]="type"
+         [disabled]="disabled"
+         [(ngModel)]="value"
+         [placeholder]="placeholder">
+  <mat-hint class="error" *ngIf="hasError && submited">
+    <span>Error, required input</span>
+  </mat-hint>
+</span>

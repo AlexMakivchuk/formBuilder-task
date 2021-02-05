@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { UserService } from 'src/app/shared/services/user.service';
 import { logIn } from 'src/app/core/actions';
 import { State } from 'src/app/core/reducers';
+import { AUTH_INPUT_FIELDS_NAMES } from 'src/app/shared/constants/element-constants';
 
 
 @Component({
@@ -13,7 +14,6 @@ import { State } from 'src/app/core/reducers';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
 
 export class LoginComponent implements OnInit {
   form: FormGroup;
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private store: Store<State>
   ) { }
+  public inputFields = AUTH_INPUT_FIELDS_NAMES;
 
   ngOnInit(): void {
     this.form = new FormGroup( {

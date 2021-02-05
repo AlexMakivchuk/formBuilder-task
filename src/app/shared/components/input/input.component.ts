@@ -22,6 +22,8 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() element: NameValueInterface;
   @Input() submited: boolean;
   @Input() type: string;
+  @Input() placeholder: string;
+  @Input() name: string;
   @Input()
   set value(value: any) {
     this._value = value;

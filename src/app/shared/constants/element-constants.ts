@@ -90,3 +90,11 @@ export const FONT_WEIGHT = [
   'normal'
 ];
 
+export const AUTH_INPUT_FIELDS_NAMES = {
+  email: 'email',
+  password: 'password',
+  name: 'name',
+  surname: 'surname',
+  agree: 'agree'
+};
+

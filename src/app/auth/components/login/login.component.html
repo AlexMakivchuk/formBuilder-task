@@ -3,12 +3,19 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="" [ngClass]="{'has-error':form.get('email').invalid && form.get('email').touched}">
-    <input id="email"   placeholder="Username" formControlName='email'>
-
+    <app-input [name]="inputFields.email"
+               [type]="'text'"
+               [placeholder]="inputFields.email"
+               [formControlName]="inputFields.email">
+    </app-input>
   </div>
 
   <div class="" [ngClass]="{'has-error':form.get('password').invalid && form.get('password').touched}">
-    <input id="password" autocomplete="off" type="password" placeholder="Password" formControlName='password'>
+    <app-input [placeholder]="inputFields.password"
+               [type]="inputFields.password"
+               [formControlName]="inputFields.password"
+               [name]="inputFields.password">
+    </app-input>
   </div>
 
   <div>

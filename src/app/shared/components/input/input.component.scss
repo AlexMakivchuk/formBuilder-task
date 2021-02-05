@@ -6,14 +6,14 @@ p {
 }
 
 .input {
-  border: 1px solid $color-3;
+  border: 1px solid $color-6;
   min-height: 20px;
-  border-radius: 25px;
+  border-radius: 15px;
   padding: 5px;
   min-width: 50px;
 
   &:focus {
-    border: 2px solid $color-1;
+    border: 1px solid $color-1;
   }
 }
 

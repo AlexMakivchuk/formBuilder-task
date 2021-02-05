@@ -1,12 +1,15 @@
 @import "~src/assets/variables";
 
-input{
-  margin-bottom: 5px;
-  height: 30px;
-  border-radius: 4px ;
+app-input{
+
 }
 div{
   width: 350px;
+}
+
+.form-input {
+  margin-bottom: 5px;
+  height: 30px;
 }
 
 .span-butt {
@@ -22,5 +25,4 @@ div{
 
 .color-red {
   color: $text-color-2;
-  margin: 5px;
 }

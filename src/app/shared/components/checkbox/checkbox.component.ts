@@ -20,6 +20,8 @@ export class CheckboxComponent implements OnInit {
   @Input() element: NameValueInterface;
   @Input() disabled: boolean;
   @Input() type: string;
+  @Input() name: string;
+  @Input() label: string;
   constructor() { }
 
   ngOnInit(): void {
