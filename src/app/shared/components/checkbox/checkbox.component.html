@@ -1,8 +1,4 @@
-<span *ngIf="element">
-  <span [ngStyle]="addStyle()">{{element.styles.label.value}}</span>
-  <input type="checkbox" id="{{element.id}}" [disabled]="disabled" [(ngModel)]="value">
-</span>
-<span *ngIf="!element">
-  <span [ngStyle]="addStyle()">{{label}}</span>
-  <input type="checkbox" id="{{name}}" [disabled]="disabled" [(ngModel)]="value">
+<span>
+  <span [ngStyle]="addStyle()">{{ element ? element.styles.label.value : label }}</span>
+  <input type="checkbox" id="{{ element ? element.id : name }}" [disabled]="disabled" [(ngModel)]="value">
 </span>

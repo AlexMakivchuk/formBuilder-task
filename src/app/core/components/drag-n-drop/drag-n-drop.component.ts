@@ -123,8 +123,9 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
     return false;
   }
 
-  delElement(index: number): void {
+  delElement(id: string, index: number): void {
     this.formElements.splice(index, 1);
+    this.form.removeControl(id);
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
   }
 

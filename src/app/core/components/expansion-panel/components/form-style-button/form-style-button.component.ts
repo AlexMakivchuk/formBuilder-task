@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {NameValueInterface} from 'src/app/shared/models/name-value-interface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
 
 @Component({
@@ -13,9 +14,10 @@ export class FormStyleButtonComponent implements OnInit {
   @Input() element: NameValueInterface;
   // tslint:disable-next-line:no-output-native
   @Output() submit = new EventEmitter<string>();
-  borderStyles = [ ...BORDER_STYLES ];
+  borderStyles = [...BORDER_STYLES];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { Store } from '@ngrx/store';
 import { first, map } from 'rxjs/operators';
+
+import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { getFormItems, State } from 'src/app/core/reducers';
 import * as actions from 'src/app/core/actions';
 import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
@@ -69,7 +70,6 @@ export class FormStyleSelectComponent implements OnInit {
         name: new FormControl(this.options[2].name),
         value: new FormControl(this.options[2].value),
       }),
-
     });
   }
 

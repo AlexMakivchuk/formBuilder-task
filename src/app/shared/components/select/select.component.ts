@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
+import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { IStyles } from 'src/app/shared/models/i-styles';
 
 
@@ -18,7 +18,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
   ]
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
-  options = [];
+  @Input() options: OptionsNameValue[] = [];
   @Input() disabled: boolean;
   @Input() inputClass;
   @Input() hasError;
@@ -62,7 +62,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit(): void {
-    this.options = this.element.options.slice();
+    if (this.element) {
+      this.options = this.element.options.slice();
+    }
     this._value = this.options[0].value;
 
   }
