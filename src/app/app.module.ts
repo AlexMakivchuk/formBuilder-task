@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -14,6 +14,7 @@ import { reducers } from 'src/app/core/reducers';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CoreEffects } from 'src/app/core/effects';
+import { AuthInterceptor } from 'src/app/shared/interceptors/auth-interceptor';
 
 
 @NgModule({
@@ -35,6 +36,11 @@ import { CoreEffects } from 'src/app/core/effects';
   exports: [
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
