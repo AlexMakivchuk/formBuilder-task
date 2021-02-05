@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, map, takeUntil, tap } from 'rxjs/operators';
+import { delay, takeUntil, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 
 import { getAuthMessage } from 'src/app/core/reducers';
 import { messageAuth } from 'src/app/core/actions';
 import { Message } from 'src/app/shared/models/message';
-import * as coreActions from 'src/app/core/actions';
 
 @Component({
   selector: 'app-auth',

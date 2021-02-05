@@ -37,7 +37,6 @@ export const reducer = createReducer(
   on(actions.logOut,  (state): CoreState => ({
     ...state,
     isAuth: false,
-    formItems: [],
   })),
   on(actions.messageAuth, (state, { payload } ): CoreState => ({
     ...state,
