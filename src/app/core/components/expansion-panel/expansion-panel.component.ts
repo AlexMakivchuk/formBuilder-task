@@ -74,13 +74,7 @@ export class ExpansionPanelComponent implements OnInit {
           this.styles[key].value = this.styles[key]?.value ? controll.value : null;
         }
       });
-      this.formItems.map(elem => {
-        if ( elem.id === this.element.id) {
-          elem.styles = JSON.parse(JSON.stringify(this.styles));
-        }
-        return elem;
-      });
-      this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formItems)) }));
+      this.store.dispatch(actions.updateFormItemById({ payload: { ...this.element, styles: this.styles }}));
     }
   }
 

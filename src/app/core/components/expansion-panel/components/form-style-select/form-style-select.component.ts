@@ -43,18 +43,7 @@ export class FormStyleSelectComponent implements OnInit {
     Object.keys(this.formOptions.value).forEach(key => {
       optArray.push(this.formOptions.get(key).value);
     });
-
-    this.store.select(getFormItems)
-      .pipe(
-        first(),
-        map((value) => {
-          this.formItems = JSON.parse(JSON.stringify(value));
-          this.formItems.map(el => el.id === this.element.id ?
-            el.options = [...optArray] :
-            el.options );
-          this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formItems)) }));
-        }))
-      .subscribe();
+    this.store.dispatch(actions.updateFormItemById({ payload: { ...this.element, options: optArray }}));
   }
 
   private buildForm(): void {

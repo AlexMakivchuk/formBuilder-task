@@ -30,6 +30,14 @@ export const reducer = createReducer(
     ...state,
     formItems: payload
   })),
+  on(actions.updateFormItemById, ( state, { payload }): CoreState => ({
+      ...state,
+      formItems: state.formItems.map(elem => elem.id === payload.id ? {
+        ...elem,
+        styles: payload.styles,
+        options: payload.options
+      } : elem)
+    })),
   on(actions.loginSuccess, ( state): CoreState => ({
     ...state,
     isAuth: true

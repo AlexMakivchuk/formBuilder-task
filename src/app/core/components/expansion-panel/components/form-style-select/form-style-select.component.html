@@ -63,7 +63,7 @@
       <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
       <br>
-      <button class="submit" type="submit">submit</button>
+      <button class="submit" type="submit" [disabled]="form.invalid">submit</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

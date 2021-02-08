@@ -5,7 +5,9 @@ import { User } from 'src/app/shared/models/user';
 import { Message } from 'src/app/shared/models/message';
 
 
-export const updateFormItem = createAction('addItem', props<{ payload: NameValueInterface[] }>());
+export const updateFormItem = createAction('add/move Item', props<{ payload: NameValueInterface[] }>());
+
+export const updateFormItemById = createAction('Update Item', props<{ payload: NameValueInterface }>());
 
 export const logIn = createAction('[Login Page] Login', props<{ payload: User }>());
 
