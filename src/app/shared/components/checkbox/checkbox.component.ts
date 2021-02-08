@@ -61,7 +61,9 @@ export class CheckboxComponent implements OnInit {
   addStyle(): IStyles {
     const styles = {};
     if (this.type === 'form') {
-      styles[`color`] = this.element.styles.color.value + this.element.styles.color.units;
+      Object.keys(this.element.styles).forEach(key => {
+        styles[key] = this.element.styles[key].value + this.element.styles[key].units;
+      });
       return styles;
     }
   }

@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
-import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
+import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 
 @Component({
   selector: 'app-form-style-input',
@@ -16,7 +17,10 @@ export class FormStyleInputComponent implements OnInit, OnDestroy {
   @Output() submit = new EventEmitter<string>();
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
+  fontWeight = [...FONT_WEIGHT];
 
+  constructor(private store: Store) {
+  }
   ngOnInit(): void {
     this.selected = this.borderStyles[0];
   }

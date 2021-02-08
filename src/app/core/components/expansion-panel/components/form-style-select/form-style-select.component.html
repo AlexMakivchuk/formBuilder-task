@@ -40,6 +40,19 @@
       </div>
 
       <div class="formControl">
+        <div>font weight</div>
+        <select [formControlName]="'fontWeight'">
+          <option *ngFor="let weight of fontWeight" [value]="weight" >{{ weight }}</option>
+        </select>
+      </div>
+
+      <div class="formControl">
+        <div>font size </div>
+        <input [formControlName]="'fontSize'">
+        <span> px</span>
+      </div>
+
+      <div class="formControl">
         <div>margin</div><input [formControlName]="'margin'"><span> px</span>
       </div>
       <p *ngIf="form.get('margin').touched && form.get('margin').invalid">Must Be A Number</p>

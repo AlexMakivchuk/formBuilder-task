@@ -6,7 +6,7 @@ import { first, map } from 'rxjs/operators';
 import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { getFormItems, State } from 'src/app/core/reducers';
 import * as actions from 'src/app/core/actions';
-import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
+import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 
 @Component({
   selector: 'app-form-style-select',
@@ -23,6 +23,7 @@ export class FormStyleSelectComponent implements OnInit {
   formItems: NameValueInterface[];
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
+  fontWeight = [...FONT_WEIGHT];
 
   constructor( private store: Store<State> ) {
   }

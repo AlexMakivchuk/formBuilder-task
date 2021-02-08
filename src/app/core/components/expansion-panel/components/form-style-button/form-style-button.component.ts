@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
-import { BORDER_STYLES } from 'src/app/shared/constants/element-constants';
+import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 
 @Component({
   selector: 'app-form-style-button',
@@ -15,6 +15,7 @@ export class FormStyleButtonComponent implements OnInit {
   // tslint:disable-next-line:no-output-native
   @Output() submit = new EventEmitter<string>();
   borderStyles = [...BORDER_STYLES];
+  fontWeight = [...FONT_WEIGHT];
 
   constructor() {
   }

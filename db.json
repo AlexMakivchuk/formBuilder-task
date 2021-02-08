@@ -188,6 +188,62 @@
           "id": "select-1612526334539"
         },
         {
+          "name": "textarea",
+          "value": "textarea",
+          "type": "",
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "100",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "5",
+              "units": "px"
+            },
+            "fontSize": {
+              "value": "60",
+              "units": "px"
+            },
+            "fontWeight": {
+              "value": "bold",
+              "units": ""
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "label",
+              "units": ""
+            },
+            "placeholder": {
+              "value": "placeholder",
+              "units": ""
+            }
+          },
+          "id": "textarea-1612796296130"
+        },
+        {
           "name": "checkbox",
           "value": "checkbox",
           "type": "",
@@ -218,6 +274,14 @@
             },
             "label": {
               "value": "checkbox",
+              "units": ""
+            },
+            "fontSize": {
+              "value": "25",
+              "units": "px"
+            },
+            "fontWeight": {
+              "value": "lighter",
               "units": ""
             },
             "color": {
@@ -255,6 +319,14 @@
             "borderRadius": {
               "value": "20",
               "units": "px"
+            },
+            "fontSize": {
+              "value": "16",
+              "units": "px"
+            },
+            "fontWeight": {
+              "value": "bolder",
+              "units": ""
             },
             "margin": {
               "value": "5",
