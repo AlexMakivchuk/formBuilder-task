@@ -41,9 +41,10 @@
           "name": "input",
           "value": "input",
           "type": "",
+          "required": true,
           "styles": {
             "width": {
-              "value": "250",
+              "value": "200",
               "units": "px"
             },
             "height": {
@@ -67,7 +68,7 @@
               "units": "px"
             },
             "fontWeight": {
-              "value": "bold",
+              "value": "normal",
               "units": ""
             },
             "borderRadius": {
@@ -91,186 +92,13 @@
               "units": ""
             }
           },
-          "id": "input-1612526323040"
-        },
-        {
-          "name": "input",
-          "value": "input",
-          "type": "",
-          "styles": {
-            "width": {
-              "value": "250",
-              "units": "px"
-            },
-            "height": {
-              "value": "50",
-              "units": "px"
-            },
-            "border": {
-              "value": "1",
-              "units": "px"
-            },
-            "borderStyle": {
-              "value": "solid",
-              "units": ""
-            },
-            "borderColor": {
-              "value": "black",
-              "units": ""
-            },
-            "fontSize": {
-              "value": "20",
-              "units": "px"
-            },
-            "fontWeight": {
-              "value": "lighter",
-              "units": ""
-            },
-            "borderRadius": {
-              "value": "25",
-              "units": "px"
-            },
-            "margin": {
-              "value": "5",
-              "units": "px"
-            },
-            "padding": {
-              "value": "5",
-              "units": "px"
-            },
-            "label": {
-              "value": "label",
-              "units": ""
-            },
-            "placeholder": {
-              "value": "placeholder",
-              "units": ""
-            }
-          },
-          "id": "input-1612526324823"
-        },
-        {
-          "name": "select",
-          "value": "select",
-          "type": "",
-          "styles": {
-            "width": {
-              "value": "200",
-              "units": "px"
-            },
-            "height": {
-              "value": "50",
-              "units": "px"
-            },
-            "border": {
-              "value": "1",
-              "units": "px"
-            },
-            "borderStyle": {
-              "value": "solid",
-              "units": ""
-            },
-            "borderColor": {
-              "value": "black",
-              "units": ""
-            },
-            "borderRadius": {
-              "value": "25",
-              "units": "px"
-            },
-            "fontSize": {
-              "value": "20",
-              "units": "px"
-            },
-            "fontWeight": {
-              "value": "lighter",
-              "units": ""
-            },
-            "margin": {
-              "value": "5",
-              "units": "px"
-            },
-            "padding": {
-              "value": "5",
-              "units": "px"
-            }
-          },
-          "options": [
-            {
-              "name": "option-name-01",
-              "value": "option-01"
-            },
-            {
-              "name": "option-name-11",
-              "value": "option-12"
-            },
-            {
-              "name": "option-name-21",
-              "value": "option-23"
-            }
-          ],
-          "id": "select-1612526334539"
-        },
-        {
-          "name": "textarea",
-          "value": "textarea",
-          "type": "",
-          "styles": {
-            "width": {
-              "value": "200",
-              "units": "px"
-            },
-            "height": {
-              "value": "100",
-              "units": "px"
-            },
-            "border": {
-              "value": "1",
-              "units": "px"
-            },
-            "borderStyle": {
-              "value": "solid",
-              "units": ""
-            },
-            "borderColor": {
-              "value": "black",
-              "units": ""
-            },
-            "borderRadius": {
-              "value": "5",
-              "units": "px"
-            },
-            "fontSize": {
-              "value": "60",
-              "units": "px"
-            },
-            "fontWeight": {
-              "value": "bold",
-              "units": ""
-            },
-            "margin": {
-              "value": "5",
-              "units": "px"
-            },
-            "padding": {
-              "value": "5",
-              "units": "px"
-            },
-            "label": {
-              "value": "label",
-              "units": ""
-            },
-            "placeholder": {
-              "value": "placeholder",
-              "units": ""
-            }
-          },
-          "id": "textarea-1612796296130"
+          "id": "input-1612870951252"
         },
         {
           "name": "checkbox",
           "value": "checkbox",
           "type": "",
+          "required": true,
           "styles": {
             "width": {
               "value": "1",
@@ -301,11 +129,11 @@
               "units": ""
             },
             "fontSize": {
-              "value": "25",
+              "value": "14",
               "units": "px"
             },
             "fontWeight": {
-              "value": "lighter",
+              "value": "normal",
               "units": ""
             },
             "color": {
@@ -313,7 +141,64 @@
               "units": ""
             }
           },
-          "id": "checkbox-1612526338455"
+          "id": "checkbox-1612888719125"
+        },
+        {
+          "name": "input",
+          "value": "input",
+          "type": "",
+          "required": true,
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "50",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "solid",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "fontSize": {
+              "value": "14",
+              "units": "px"
+            },
+            "fontWeight": {
+              "value": "normal",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "25",
+              "units": "px"
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            },
+            "label": {
+              "value": "label",
+              "units": ""
+            },
+            "placeholder": {
+              "value": "placeholder",
+              "units": ""
+            }
+          },
+          "id": "input-1612871515457"
         },
         {
           "name": "button",
@@ -345,11 +230,11 @@
               "units": "px"
             },
             "fontSize": {
-              "value": "16",
+              "value": "14",
               "units": "px"
             },
             "fontWeight": {
-              "value": "bolder",
+              "value": "normal",
               "units": ""
             },
             "margin": {
@@ -369,7 +254,7 @@
               "units": ""
             }
           },
-          "id": "button-1612526340572"
+          "id": "button-1612871513342"
         }
       ],
       "id": 1

@@ -17,7 +17,7 @@ export class FormStyleInputComponent implements OnInit, OnDestroy {
   @Output() submit = new EventEmitter<string>();
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
-  fontWeight = [...FONT_WEIGHT];
+  fontWeight = [ ...FONT_WEIGHT ];
 
   constructor(private store: Store) {
   }

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {
     CdkDragDrop,
     moveItemInArray,
@@ -6,7 +6,7 @@ import {
   } from '@angular/cdk/drag-drop';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import { first, takeUntil } from 'rxjs/operators';
+import { first, map, takeUntil } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -32,7 +32,7 @@ import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
   templateUrl: './drag-n-drop.component.html',
   styleUrls: ['./drag-n-drop.component.scss']
 })
-export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DragNDropComponent implements OnInit, OnDestroy {
 
   public ngUndestroy$ = new Subject<any>();
   public builder: FormBuilderModel;
@@ -43,12 +43,12 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
   public disabled = false;
 
   constInitElements: NameValueInterface[] = [
-    { name: EElementNames.input, value: 'input', type: '', styles: {...INPUT_STYLES} },
-    { name: EElementNames.select, value: 'select', type: '', styles: {...SELECT_STYLES}, options: [...CONST_OPTIONS]},
-    { name: EElementNames.checkbox, value: 'checkbox', type: '', styles: {...CHECKBOX_STYLES} },
-    { name: EElementNames.button, value: 'button', type: 'basic', styles: {...BUTTON_STYLES} },
-    { name: EElementNames.button, value: 'button', type: 'primary', styles: {...BUTTON_STYLES} },
-    { name: EElementNames.textarea, value: 'textarea', type: '', styles: {...TEXTAREA_STYLES} }
+    { name: EElementNames.input, value: 'input', type: '', required: false, styles: { ...INPUT_STYLES } },
+    { name: EElementNames.select, value: 'select', type: '', required: false, styles: { ...SELECT_STYLES }, options: [...CONST_OPTIONS]},
+    { name: EElementNames.checkbox, value: 'checkbox', type: '', required: false, styles: { ...CHECKBOX_STYLES } },
+    { name: EElementNames.button, value: 'button', type: 'basic', styles: { ...BUTTON_STYLES } },
+    { name: EElementNames.button, value: 'button', type: 'primary', styles: { ...BUTTON_STYLES } },
+    { name: EElementNames.textarea, value: 'textarea', type: '', required: false, styles: { ...TEXTAREA_STYLES } }
   ];
   initElements = [];
 
@@ -72,12 +72,27 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
             this.builder = value;
           }
           this.store.select(getFormItems).pipe(
-            takeUntil(this.ngUndestroy$))
-            .subscribe( ( elements ) => {
-              this.formElements = [ ...elements ];
-              this.buildForm(this.formElements);
-            });
-      } );
+            takeUntil(this.ngUndestroy$),
+            map(elems => {
+              this.buildForm(elems);
+              this.formElements = [ ...elems ];
+              return elems;
+            }))
+            .subscribe(
+              (elements) => {
+                elements.forEach(e => {
+                  if (e.name !== EElementNames.button) {
+                    if (e.required) {
+                      this.form.get(e.id).setValidators(e.name !== 'checkbox' ? [Validators.required] : [Validators.requiredTrue]);
+                    } else {
+                      this.form.get(e.id).clearValidators();
+                    }
+                  }
+                });
+              }
+            );
+        }
+      );
     }
   }
 
@@ -85,20 +100,19 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
     controls.forEach(el => {
       switch (el.name) {
         case EElementNames.input:
-          this.form.addControl(el.id, new FormControl('', [Validators.required]));
+          this.form.addControl(el.id, new FormControl(''));
           break;
         case EElementNames.checkbox:
-          this.form.addControl(el.id, new FormControl(false, [Validators.requiredTrue]));
+          this.form.addControl(el.id, new FormControl(false));
           break;
         case EElementNames.textarea:
-          this.form.addControl(el.id, new FormControl('', [Validators.required]));
+          this.form.addControl(el.id, new FormControl(''));
           break;
         case EElementNames.select:
-          this.form.addControl(el.id, new FormControl(el.options[0].value, [Validators.required]));
+          this.form.addControl(el.id, new FormControl(''));
           break;
       }
     });
-
   }
 
   drop(event: CdkDragDrop<object[]>): void {
@@ -116,15 +130,17 @@ export class DragNDropComponent implements OnInit, OnDestroy, AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  ngAfterViewInit(): void {
-  }
-
   noReturnPredicate(): boolean {
     return false;
   }
 
   delElement(id: string, index: number): void {
     this.formElements.splice(index, 1);
+    Object.keys(this.form.value).forEach(
+      key => key !== 'checkbox'
+      ? this.form.get(key).setValue('')
+      : this.form.get(key).setValue(false)
+    );
     this.form.removeControl(id);
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
   }

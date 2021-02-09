@@ -35,7 +35,8 @@ export const reducer = createReducer(
       formItems: state.formItems.map(elem => elem.id === payload.id ? {
         ...elem,
         styles: payload.styles,
-        options: payload.options
+        options: payload.options,
+        required: payload.required
       } : elem)
     })),
   on(actions.loginSuccess, ( state): CoreState => ({

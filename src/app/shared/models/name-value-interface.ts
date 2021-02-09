@@ -6,6 +6,7 @@ export interface NameValueInterface {
   id?: string;
   type?: string;
   styles: IStyles;
+  required?: boolean;
   options?: OptionsNameValue[];
 }
 
