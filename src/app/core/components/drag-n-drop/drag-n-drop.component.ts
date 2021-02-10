@@ -6,7 +6,7 @@ import {
   } from '@angular/cdk/drag-drop';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { first, map, takeUntil, tap } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

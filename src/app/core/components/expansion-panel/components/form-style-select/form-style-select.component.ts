@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { first, map } from 'rxjs/operators';
 
 import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
-import { getFormItems, State } from 'src/app/core/reducers';
+import { State } from 'src/app/core/reducers';
 import * as actions from 'src/app/core/actions';
 import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 

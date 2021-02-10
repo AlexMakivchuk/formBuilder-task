@@ -3,9 +3,9 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { Store } from '@ngrx/store';
+import { first } from 'rxjs/operators';
 
 import { getAuthState } from 'src/app/core/reducers';
-import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

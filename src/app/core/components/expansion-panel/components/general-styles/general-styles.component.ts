@@ -1,13 +1,15 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
 import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import * as actions from 'src/app/core/actions';
 import { IStyles } from 'src/app/shared/models/i-styles';
-import { Store } from '@ngrx/store';
 import { getGeneralStyles } from 'src/app/core/reducers';
-import { takeUntil, tap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-general-styles',
