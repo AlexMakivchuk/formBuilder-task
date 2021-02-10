@@ -9,6 +9,8 @@ export const updateFormItem = createAction('add/move Item', props<{ payload: Nam
 
 export const updateFormItemById = createAction('Update Item', props<{ payload: NameValueInterface }>());
 
+export const addGeneralStyles = createAction('add general styles', props<{ payload: NameValueInterface }>());
+
 export const logIn = createAction('[Login Page] Login', props<{ payload: User }>());
 
 export const registrateUser = createAction('[Registration Page] Registration', props<{ payload: User}>());

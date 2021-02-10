@@ -8,6 +8,7 @@ import { Message } from 'src/app/shared/models/message';
 
 export interface CoreState {
   formItems: NameValueInterface[];
+  generalStyles: NameValueInterface;
   userState: User;
   isAuth: boolean;
   authMessage: Message;
@@ -15,6 +16,7 @@ export interface CoreState {
 
 const initState: CoreState = {
   formItems: [],
+  generalStyles: null,
   userState: null,
   isAuth: false,
   authMessage: { text: '', type: '' }
@@ -30,15 +32,19 @@ export const reducer = createReducer(
     ...state,
     formItems: payload
   })),
-  on(actions.updateFormItemById, ( state, { payload }): CoreState => ({
-      ...state,
-      formItems: state.formItems.map(elem => elem.id === payload.id ? {
-        ...elem,
-        styles: payload.styles,
-        options: payload.options,
-        required: payload.required
-      } : elem)
-    })),
+  on(actions.updateFormItemById, (state, { payload }): CoreState => ({
+    ...state,
+    formItems: state.formItems.map(elem => elem.id === payload.id ? {
+      ...elem,
+      styles: payload.styles,
+      options: payload.options,
+      required: payload.required
+    } : elem)
+  })),
+  on(actions.addGeneralStyles, (state, { payload }): CoreState => ({
+    ...state,
+    generalStyles: payload
+  })),
   on(actions.loginSuccess, ( state): CoreState => ({
     ...state,
     isAuth: true
@@ -62,6 +68,11 @@ export const getCoreState = (state: State): CoreState => state.core;
 export const getFormItems = createSelector(
   getCoreState,
   (state: CoreState): NameValueInterface[] => state.formItems
+);
+
+export const getGeneralStyles = createSelector(
+  getCoreState,
+  (state: CoreState): NameValueInterface => state.generalStyles
 );
 
 export const getAuthState = createSelector(

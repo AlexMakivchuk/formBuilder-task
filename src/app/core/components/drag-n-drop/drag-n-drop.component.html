@@ -1,6 +1,7 @@
 <div class="h_100">
-  <div class="border-example-list" cdkDropListGroup>
+  <div class="border-example-list" cdkDropListGroup *ngrxLet="generalStyles$; let styles">
     <div class="example-container border-example-list">
+      <app-expansion-panel [element]="styles ? styles : generalStylesElement"></app-expansion-panel>
       <app-expansion-panel *ngFor="let element of formElements" [element]="element"></app-expansion-panel>
     </div>
     <div class="example-container ">
@@ -11,69 +12,71 @@
         [cdkDropListConnectedTo]="[initElementsList]"
         class="example-list border_none"
         (cdkDropListDropped)="drop($event)">
-        <form (submit)="onSubmit($event)" [formGroup]="form">
-          <div class="form-element mh-30" cdkDrag *ngFor="let element of formElements; index as i">
-            <div class="element">
+        <div [ngStyle]="addGeneralStyles(styles ? styles : generalStylesElement)">
+          <form (submit)="onSubmit($event)" [formGroup]="form">
+            <div class="form-element mh-30" cdkDrag *ngFor="let element of formElements; index as i">
+              <div class="element">
 
-              <div [ngSwitch]="element.name" class="align-center m-10">
-                <div *ngSwitchCase="names.select">
-                  <app-select [formControlName]="element.id"
-                              [element]="element"
-                              [type]="dragNDropType"
-                              [disabled]="disabled">
-
-                  </app-select>
-                </div>
-                <div *ngSwitchCase="names.input">
-                  <app-input [formControlName]="element.id"
-                             [element]="element"
-                             [type]="dragNDropType"
-                             [disabled]="disabled"
-                  >
-                  </app-input>
-                </div>
-                <span *ngSwitchCase="names.checkbox">
+                <div [ngSwitch]="element.name" class="align-center m-10">
+                  <div *ngSwitchCase="names.select">
+                    <app-select [formControlName]="element.id"
+                                [element]="element"
+                                [type]="dragNDropType"
+                                [disabled]="disabled"
+                    >
+                    </app-select>
+                  </div>
+                  <div *ngSwitchCase="names.input">
+                    <app-input [formControlName]="element.id"
+                               [element]="element"
+                               [type]="dragNDropType"
+                               [disabled]="disabled"
+                    >
+                    </app-input>
+                  </div>
+                  <span *ngSwitchCase="names.checkbox">
                   <app-checkbox [formControlName]="element.id"
                                 [element]="element"
                                 [type]="dragNDropType"
                                 [disabled]="disabled"
                   ></app-checkbox>
                 </span>
-                <span *ngSwitchCase="names.button">
+                  <span *ngSwitchCase="names.button">
                   <app-button [element]="element"
                               [type]="dragNDropType"
                               [disabled]="form.invalid">
                   </app-button>
                 </span>
-                <span *ngSwitchCase="names.textarea">
+                  <span *ngSwitchCase="names.textarea">
                   <app-textarea [formControlName]="element.id"
                                 [element]="element"
                                 [type]="dragNDropType"
                                 [disabled]="disabled">
                   </app-textarea>
                 </span>
+                </div>
+              </div>
+              <div class="relative clear-button">
+                <button class="absolute"
+                        type="button"
+                        mat-button
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Clear"
+                        (click)="delElement(element.id, i)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
               </div>
             </div>
-            <div class="relative clear-button">
-              <button class="absolute"
-                      type="button"
-                      mat-button
-                      matSuffix
-                      mat-icon-button
-                      aria-label="Clear"
-                      (click)="delElement(element.id, i)"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <div class="save-form-button">
-        <app-button [buttonType]="'basic'" [click]="'save form'" (save)="saveForm()" ></app-button>
+        <app-button [buttonType]="'basic'" [click]="'save form'" (save)="saveForm(styles)" ></app-button>
       </div>
       <div class="align-center">
-        <app-button class="m-10" [click]="'logout'" [buttonType]="'basic'" (save)="onLogOut()"></app-button>
+        <app-button class="m-10" [click]="'logout'" [buttonType]="'basic'" (save)="onLogOut(styles)"></app-button>
       </div>
     </div>
     <div class="example-container">

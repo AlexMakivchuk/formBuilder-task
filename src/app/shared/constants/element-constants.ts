@@ -1,6 +1,17 @@
 import { IStyles } from 'src/app/shared/models/i-styles';
 import { OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 
+export const GENERAL_STYLES: IStyles = {
+  width: { value: '450', units: 'px' },
+  height: { value: '450', units: 'px' },
+  border: { value: '1', units: 'px' },
+  borderStyle: { value: 'solid', units: '' },
+  borderColor: { value: 'black', units: '' },
+  borderRadius: { value: '25', units: 'px' },
+  margin: { value: '5', units: 'px' },
+  padding: { value: '5', units: 'px' },
+};
+
 export const INPUT_STYLES: IStyles = {
   width: { value: '200', units: 'px' },
   height: { value: '50', units: 'px' },
@@ -43,7 +54,6 @@ export const SELECT_STYLES: IStyles = {
   margin: { value: '5', units: 'px' },
   padding: { value: '5', units: 'px' },
 };
-
 
 export const CHECKBOX_STYLES: IStyles = {
   width: { value: '1', units: 'px' },

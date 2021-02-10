@@ -14,14 +14,11 @@
   <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
 
   <div class="formControl">
-    <div>color text </div><input type="color" [formControlName]="'color'">
-  </div>
-
-  <div class="formControl">
     <div>border</div>
     <input type="number" [formControlName]="'border'">
     <span> px </span>
     <select [formControlName]="'borderStyle'">
+      <option [value]="'none'">none</option>
       <option *ngFor="let style of borderStyles" [value]="style" >{{ style }}</option>
     </select>
     <input type="color" class="color" [formControlName]="'borderColor'">
@@ -35,19 +32,6 @@
   </div>
 
   <div class="formControl">
-    <div>font weight</div>
-    <select [formControlName]="'fontWeight'">
-      <option *ngFor="let weight of fontWeight" [value]="weight" >{{ weight }}</option>
-    </select>
-  </div>
-
-  <div class="formControl">
-    <div>font size </div>
-    <input type="number" [formControlName]="'fontSize'">
-    <span> px</span>
-  </div>
-
-  <div class="formControl">
     <div>margin </div><input type="number" [formControlName]="'margin'"><span> px</span>
   </div>
   <p *ngIf="form.get('margin').touched && form.get('margin').invalid">Must Be A Number</p>
@@ -57,11 +41,6 @@
   </div>
   <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
-  <div class="formControl">
-    <div>action(save, click...) </div><input [formControlName]="'label'">
-  </div>
-
   <br>
   <button class="submit" type="submit" [disabled]="form.invalid">submit</button>
 </form>
-

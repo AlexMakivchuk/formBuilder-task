@@ -35,13 +35,13 @@
   ],
   "form-builder": [
     {
-      "userId": 2,
+      "userId": "2",
       "builderArray": [
         {
           "name": "input",
           "value": "input",
           "type": "",
-          "required": true,
+          "required": false,
           "styles": {
             "width": {
               "value": "200",
@@ -92,65 +92,16 @@
               "units": ""
             }
           },
-          "id": "input-1612870951252"
-        },
-        {
-          "name": "checkbox",
-          "value": "checkbox",
-          "type": "",
-          "required": true,
-          "styles": {
-            "width": {
-              "value": "1",
-              "units": "px"
-            },
-            "height": {
-              "value": "1",
-              "units": "px"
-            },
-            "border": {
-              "value": "1",
-              "units": "px"
-            },
-            "borderRadius": {
-              "value": "1",
-              "units": "px"
-            },
-            "margin": {
-              "value": "5",
-              "units": "px"
-            },
-            "padding": {
-              "value": "5",
-              "units": "px"
-            },
-            "label": {
-              "value": "checkbox",
-              "units": ""
-            },
-            "fontSize": {
-              "value": "14",
-              "units": "px"
-            },
-            "fontWeight": {
-              "value": "normal",
-              "units": ""
-            },
-            "color": {
-              "value": "black",
-              "units": ""
-            }
-          },
-          "id": "checkbox-1612888719125"
+          "id": "input-1612957673544"
         },
         {
           "name": "input",
           "value": "input",
           "type": "",
-          "required": true,
+          "required": false,
           "styles": {
             "width": {
-              "value": "200",
+              "value": 300,
               "units": "px"
             },
             "height": {
@@ -198,7 +149,70 @@
               "units": ""
             }
           },
-          "id": "input-1612871515457"
+          "id": "input-1612967176106"
+        },
+        {
+          "name": "select",
+          "value": "select",
+          "type": "",
+          "required": false,
+          "styles": {
+            "width": {
+              "value": "200",
+              "units": "px"
+            },
+            "height": {
+              "value": "50",
+              "units": "px"
+            },
+            "border": {
+              "value": "1",
+              "units": "px"
+            },
+            "borderStyle": {
+              "value": "dashed",
+              "units": ""
+            },
+            "borderColor": {
+              "value": "black",
+              "units": ""
+            },
+            "borderRadius": {
+              "value": "25",
+              "units": "px"
+            },
+            "fontSize": {
+              "value": "14",
+              "units": "px"
+            },
+            "fontWeight": {
+              "value": "normal",
+              "units": ""
+            },
+            "margin": {
+              "value": "5",
+              "units": "px"
+            },
+            "padding": {
+              "value": "5",
+              "units": "px"
+            }
+          },
+          "options": [
+            {
+              "name": "option-name-0",
+              "value": "option-0"
+            },
+            {
+              "name": "option-name-1",
+              "value": "option-1"
+            },
+            {
+              "name": "option-name-2",
+              "value": "option-2"
+            }
+          ],
+          "id": "select-1612967192405"
         },
         {
           "name": "button",
@@ -254,70 +268,49 @@
               "units": ""
             }
           },
-          "id": "button-1612871513342"
+          "id": "button-1612967180206"
         }
       ],
-      "id": 1
-    },
-    {
-      "userId": "3",
-      "builderArray": [
-        {
-          "name": "select",
-          "value": "select",
-          "type": "",
-          "styles": {
-            "width": {
-              "value": "200",
-              "units": "px"
-            },
-            "height": {
-              "value": "50",
-              "units": "px"
-            },
-            "border": {
-              "value": "1",
-              "units": "px"
-            },
-            "borderStyle": {
-              "value": "solid",
-              "units": ""
-            },
-            "borderColor": {
-              "value": "black",
-              "units": ""
-            },
-            "borderRadius": {
-              "value": "25",
-              "units": "px"
-            },
-            "margin": {
-              "value": "5",
-              "units": "px"
-            },
-            "padding": {
-              "value": "5",
-              "units": "px"
-            }
+      "generalStyles": {
+        "name": "general styles",
+        "type": "",
+        "value": "",
+        "styles": {
+          "width": {
+            "value": "500",
+            "units": "px"
           },
-          "options": [
-            {
-              "name": "option-name-0",
-              "value": "option-0"
-            },
-            {
-              "name": "option-name-1",
-              "value": "option-1"
-            },
-            {
-              "name": "option-name-2",
-              "value": "option-2"
-            }
-          ],
-          "id": "select-1612526422103"
+          "height": {
+            "value": 600,
+            "units": "px"
+          },
+          "border": {
+            "value": "1",
+            "units": "px"
+          },
+          "borderStyle": {
+            "value": "dotted",
+            "units": ""
+          },
+          "borderColor": {
+            "value": "#f53232",
+            "units": ""
+          },
+          "borderRadius": {
+            "value": "25",
+            "units": "px"
+          },
+          "margin": {
+            "value": "5",
+            "units": "px"
+          },
+          "padding": {
+            "value": "5",
+            "units": "px"
+          }
         }
-      ],
-      "id": 2
+      },
+      "id": 1
     }
   ]
 }

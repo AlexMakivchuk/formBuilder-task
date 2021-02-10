@@ -6,9 +6,10 @@
         {{ element.name }}
       </mat-panel-title>
       <mat-panel-description>
-        ID: {{ element.id }}
+        <span *ngIf="element.id">ID: {{ element.id }}</span>
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <app-general-styles *ngIf="element.name === 'general styles'"></app-general-styles>
     <app-form-style-input *ngIf="element.name === 'input'"
                           [form]="form"
                           (submit)="OnSubmit()"

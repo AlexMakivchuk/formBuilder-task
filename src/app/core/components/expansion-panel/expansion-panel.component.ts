@@ -2,7 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { BUTTON_STYLES, CHECKBOX_STYLES, INPUT_STYLES, SELECT_STYLES, TEXTAREA_STYLES } from 'src/app/shared/constants/element-constants';
+import {
+  BUTTON_STYLES,
+  CHECKBOX_STYLES,
+  GENERAL_STYLES,
+  INPUT_STYLES,
+  SELECT_STYLES,
+  TEXTAREA_STYLES
+} from 'src/app/shared/constants/element-constants';
 import * as actions from 'src/app/core/actions';
 import { State } from 'src/app/core/reducers';
 import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';

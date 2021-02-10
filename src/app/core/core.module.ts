@@ -11,6 +11,7 @@ import { FormStyleSelectComponent } from 'src/app/core/components/expansion-pane
 import { FormStyleCheckboxComponent } from 'src/app/core/components/expansion-panel/components/form-style-checkbox/form-style-checkbox.component';
 import { FormStyleTextareaComponent } from 'src/app/core/components/expansion-panel/components/form-style-textarea/form-style-textarea.component';
 import { ExpansionPanelComponent } from 'src/app/core/components/expansion-panel/expansion-panel.component';
+import { GeneralStylesComponent } from './components/expansion-panel/components/general-styles/general-styles.component';
 
 
 
@@ -24,6 +25,7 @@ import { ExpansionPanelComponent } from 'src/app/core/components/expansion-panel
     FormStyleCheckboxComponent,
     FormStyleTextareaComponent,
     ExpansionPanelComponent,
+    GeneralStylesComponent,
 
   ],
     imports: [

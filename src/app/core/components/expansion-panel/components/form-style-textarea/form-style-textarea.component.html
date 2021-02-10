@@ -1,21 +1,21 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="formControl">
     <div>width </div>
-    <input [formControlName]="'width'">
+    <input type="number" [formControlName]="'width'">
     <span> px</span>
   </div>
   <p *ngIf="form.get('width').touched && form.get('width').invalid">Must Be A Number</p>
 
   <div class="formControl">
     <div>height </div>
-    <input [formControlName]="'height'">
+    <input type="number" [formControlName]="'height'">
     <span> px</span>
   </div>
   <p *ngIf="form.get('height').touched && form.get('height').invalid">Must Be A Number</p>
 
   <div class="formControl">
     <div>border</div>
-    <input [formControlName]="'border'">
+    <input type="number" [formControlName]="'border'">
     <span> px </span>
     <select [formControlName]="'borderStyle'">
       <option *ngFor="let style of borderStyles" [value]="style" >{{ style }}</option>
@@ -26,7 +26,7 @@
 
   <div class="formControl">
     <div>borderRadius </div>
-    <input [formControlName]="'borderRadius'">
+    <input type="number" [formControlName]="'borderRadius'">
     <span> px</span>
   </div>
 
@@ -39,7 +39,7 @@
 
   <div class="formControl">
     <div>font size </div>
-    <input [formControlName]="'fontSize'">
+    <input type="number" [formControlName]="'fontSize'">
     <span> px</span>
   </div>
 
@@ -49,12 +49,12 @@
   </div>
 
   <div class="formControl">
-    <div>margin </div><input [formControlName]="'margin'"><span> px</span>
+    <div>margin </div><input type="number" [formControlName]="'margin'"><span> px</span>
   </div>
   <p *ngIf="form.get('margin').touched && form.get('margin').invalid">Must Be A Number</p>
 
   <div class="formControl">
-    <div>padding </div><input [formControlName]="'padding'"><span> px</span>
+    <div>padding </div><input type="number" [formControlName]="'padding'"><span> px</span>
   </div>
   <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
