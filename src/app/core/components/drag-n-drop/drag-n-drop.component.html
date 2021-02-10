@@ -43,14 +43,16 @@
                 <span *ngSwitchCase="names.button">
                   <app-button [element]="element"
                               [type]="dragNDropType"
-                              [disabled]="form.invalid">
+                              [disabled]="form.invalid"
+                  >
                   </app-button>
                 </span>
                 <span *ngSwitchCase="names.textarea">
                   <app-textarea [formControlName]="element.id"
                                 [element]="element"
                                 [type]="dragNDropType"
-                                [disabled]="disabled">
+                                [disabled]="disabled"
+                  >
                   </app-textarea>
                 </span>
               </div>
