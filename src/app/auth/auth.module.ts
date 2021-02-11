@@ -20,4 +20,5 @@ import { LoginComponent } from 'src/app/auth/components/login/login.component';
     AuthRoutingModule
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}

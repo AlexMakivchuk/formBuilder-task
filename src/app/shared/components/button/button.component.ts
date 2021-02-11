@@ -6,7 +6,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: [ './button.component.scss' ]
 })
 export class ButtonComponent implements OnInit {
   @Input() element: NameValueInterface;
@@ -15,7 +15,9 @@ export class ButtonComponent implements OnInit {
   @Input() click: string;
   @Input() buttonType: string;
   @Output() save = new EventEmitter();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

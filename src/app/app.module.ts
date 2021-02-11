@@ -30,11 +30,10 @@ import { AuthInterceptor } from 'src/app/shared/interceptors/auth-interceptor';
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([CoreEffects]),
+    EffectsModule.forRoot([ CoreEffects ]),
     HttpClientModule
   ],
-  exports: [
-  ],
+  exports: [],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -42,6 +41,7 @@ import { AuthInterceptor } from 'src/app/shared/interceptors/auth-interceptor';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}

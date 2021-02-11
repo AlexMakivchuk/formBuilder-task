@@ -7,7 +7,7 @@ import { FONT_WEIGHT } from 'src/app/shared/constants/element-constants';
 @Component({
   selector: 'app-form-style-checkbox',
   templateUrl: './form-style-checkbox.component.html',
-  styleUrls: ['./form-style-checkbox.component.scss']
+  styleUrls: [ './form-style-checkbox.component.scss' ]
 })
 export class FormStyleCheckboxComponent implements OnInit {
   @Input() form: FormGroup;
@@ -15,9 +15,10 @@ export class FormStyleCheckboxComponent implements OnInit {
   // tslint:disable-next-line:no-output-native
   @Output() submit = new EventEmitter<string>();
 
-  fontWeight = [...FONT_WEIGHT];
+  fontWeight = [ ...FONT_WEIGHT ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

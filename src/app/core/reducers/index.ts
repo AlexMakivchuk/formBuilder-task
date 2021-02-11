@@ -28,7 +28,7 @@ export interface State {
 
 export const reducer = createReducer(
   initState,
-  on(actions.updateFormItem, ( state, { payload }): CoreState => ({
+  on(actions.updateFormItem, (state, { payload }): CoreState => ({
     ...state,
     formItems: payload
   })),
@@ -45,15 +45,15 @@ export const reducer = createReducer(
     ...state,
     generalStyles: payload
   })),
-  on(actions.loginSuccess, ( state): CoreState => ({
+  on(actions.loginSuccess, (state): CoreState => ({
     ...state,
     isAuth: true
   })),
-  on(actions.logOut,  (state): CoreState => ({
+  on(actions.logOut, (state): CoreState => ({
     ...state,
     isAuth: false,
   })),
-  on(actions.messageAuth, (state, { payload } ): CoreState => ({
+  on(actions.messageAuth, (state, { payload }): CoreState => ({
     ...state,
     authMessage: { ...payload }
   })),
@@ -82,5 +82,5 @@ export const getAuthState = createSelector(
 
 export const getAuthMessage = createSelector(
   getCoreState,
-  ( state) => state.authMessage
+  (state) => state.authMessage
 );

@@ -14,9 +14,9 @@ import { getGeneralStyles } from 'src/app/core/reducers';
 @Component({
   selector: 'app-general-styles',
   templateUrl: './general-styles.component.html',
-  styleUrls: ['./general-styles.component.scss']
+  styleUrls: [ './general-styles.component.scss' ]
 })
-export class GeneralStylesComponent implements OnInit, OnDestroy{
+export class GeneralStylesComponent implements OnInit, OnDestroy {
   element: NameValueInterface;
   public form: FormGroup;
   public borderStyles = [ ...BORDER_STYLES ];
@@ -24,7 +24,8 @@ export class GeneralStylesComponent implements OnInit, OnDestroy{
   public fontWeight = [ ...FONT_WEIGHT ];
   public ngUnsubscribe$ = new Subject();
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   ngOnInit(): void {
     this.form = this.buildForm();
@@ -37,37 +38,39 @@ export class GeneralStylesComponent implements OnInit, OnDestroy{
             this.form.get(key).patchValue(item ? item.styles[key].value : '');
           });
         })
-        ).subscribe();
+      ).subscribe();
   }
 
   buildForm(): FormGroup {
     return new FormGroup({
-      width: new FormControl('', [Validators.required, this.isNumberValidator]),
-      height: new FormControl('', [Validators.required, this.isNumberValidator]),
-      border: new FormControl('', [Validators.required, this.isNumberValidator]),
-      borderStyle: new FormControl('', [Validators.required]),
-      borderColor: new FormControl('', [Validators.required]),
-      borderRadius: new FormControl('', [Validators.required, this.isNumberValidator]),
-      margin: new FormControl('', [Validators.required, this.isNumberValidator]),
-      padding: new FormControl('', [Validators.required, this.isNumberValidator])
+      width: new FormControl('', [ Validators.required, this.isNumberValidator ]),
+      height: new FormControl('', [ Validators.required, this.isNumberValidator ]),
+      border: new FormControl('', [ Validators.required, this.isNumberValidator ]),
+      borderStyle: new FormControl('', [ Validators.required ]),
+      borderColor: new FormControl('', [ Validators.required ]),
+      borderRadius: new FormControl('', [ Validators.required, this.isNumberValidator ]),
+      margin: new FormControl('', [ Validators.required, this.isNumberValidator ]),
+      padding: new FormControl('', [ Validators.required, this.isNumberValidator ])
     });
   }
 
   public onSubmit(): void {
     const generalStyles: IStyles = { ...this.element.styles };
-    Object.keys(this.form.value).forEach( key => {
+    Object.keys(this.form.value).forEach(key => {
       generalStyles[key].value = this.form.get(key).value;
     });
-    this.store.dispatch(actions.addGeneralStyles({ payload: {
+    this.store.dispatch(actions.addGeneralStyles({
+      payload: {
         ...this.element,
         styles: generalStyles
-      }}));
+      }
+    }));
   }
 
   public isNumberValidator = (control: FormControl): object => {
     const condition = typeof parseInt(control.value, 10) === 'number';
     return !condition ? { isNumberValidator: 'the value must be a number' } : null;
-  }
+  };
 
   ngOnDestroy(): void {
     this.ngUnsubscribe$.next(null);

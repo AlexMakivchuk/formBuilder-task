@@ -58,4 +58,5 @@ import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.c
   ]
 
 })
-export class SharedModule { }
+export class SharedModule {
+}

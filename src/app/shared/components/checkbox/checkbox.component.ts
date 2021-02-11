@@ -7,7 +7,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
+  styleUrls: [ './checkbox.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,7 +22,9 @@ export class CheckboxComponent implements OnInit {
   @Input() type: string;
   @Input() name: string;
   @Input() label: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -42,9 +44,11 @@ export class CheckboxComponent implements OnInit {
     this.onChange(this.value);
   }
 
-  private onChange = (value: number) => {};
+  private onChange = (value: number) => {
+  };
 
-  private onTouched = () => {};
+  private onTouched = () => {
+  };
 
   public registerOnChange(fn: (value: number) => void): void {
     this.onChange = fn;

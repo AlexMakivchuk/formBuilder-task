@@ -7,7 +7,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  styleUrls: [ './input.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,6 +25,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() type: string;
   @Input() placeholder: string;
   @Input() name: string;
+
   @Input()
   set value(value: any) {
     this._value = value;
@@ -41,9 +42,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   // tslint:disable-next-line:variable-name
   _value: any = '';
   onChange = (value) => {
-  }
+  };
   onTouched = () => {
-  }
+  };
 
   ngOnInit(): void {
 

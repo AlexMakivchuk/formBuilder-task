@@ -6,7 +6,7 @@ import { DragNDropComponent } from 'src/app/core/components/drag-n-drop/drag-n-d
 import { UnathorizedGuard } from 'src/app/shared/guards/unathorized.guard';
 
 const routes: Routes = [
-  { path: 'form-builder', component: DragNDropComponent, canActivate: [UnathorizedGuard] },
+  { path: 'form-builder', component: DragNDropComponent, canActivate: [ UnathorizedGuard ] },
 ];
 
 @NgModule({
@@ -19,4 +19,5 @@ const routes: Routes = [
     RouterModule
   ],
 })
-export class CoreRoutingModule { }
+export class CoreRoutingModule {
+}

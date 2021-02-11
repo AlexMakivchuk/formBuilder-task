@@ -8,7 +8,7 @@ import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-con
 @Component({
   selector: 'app-form-style-input',
   templateUrl: './form-style-input.component.html',
-  styleUrls: ['./form-style-input.component.scss']
+  styleUrls: [ './form-style-input.component.scss' ]
 })
 export class FormStyleInputComponent implements OnInit, OnDestroy {
   @Input() form: FormGroup;
@@ -21,6 +21,7 @@ export class FormStyleInputComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store) {
   }
+
   ngOnInit(): void {
     this.selected = this.borderStyles[0];
   }

@@ -8,7 +8,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
+  styleUrls: [ './select.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,6 +25,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input() element: NameValueInterface;
   @Input() submited: boolean;
   @Input() type: string;
+
   @Input()
   set value(value: any) {
     this._value = value;
@@ -41,9 +42,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   // tslint:disable-next-line:variable-name
   _value: any;
   onChange = (value) => {
-  }
+  };
   onTouched = () => {
-  }
+  };
 
   writeValue(value): void {
     this.onChange(value);

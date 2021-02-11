@@ -7,7 +7,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss'],
+  styleUrls: [ './textarea.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -30,6 +30,7 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   get value(): any {
     return this._value;
   }
+
   @Input() disabled: boolean;
   @Input() inputClass;
   @Input() hasError;
@@ -47,9 +48,11 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.value);
   }
 
-  private onChange = (value: number) => {};
+  private onChange = (value: number) => {
+  };
 
-  private onTouched = () => {};
+  private onTouched = () => {
+  };
 
   public registerOnChange(fn: (value: number) => void): void {
     this.onChange = fn;

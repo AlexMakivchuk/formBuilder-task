@@ -20,7 +20,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-expansion-panel',
   templateUrl: './expansion-panel.component.html',
-  styleUrls: ['./expansion-panel.component.scss']
+  styleUrls: [ './expansion-panel.component.scss' ]
 })
 export class ExpansionPanelComponent implements OnInit {
   panelOpenState = false;
@@ -31,7 +31,7 @@ export class ExpansionPanelComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<State>
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -45,19 +45,19 @@ export class ExpansionPanelComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
-      width: ['', [Validators.required, this.isNumberValidator]],
-      height: ['', [Validators.required, this.isNumberValidator]],
-      border: ['', [Validators.required, this.isNumberValidator]],
-      borderStyle: [''],
-      borderColor: [''],
-      borderRadius: ['', [Validators.required, this.isNumberValidator]],
-      fontWeight: ['', [Validators.required, this.isNumberValidator]],
-      fontSize: ['', [Validators.required, this.isNumberValidator]],
-      margin: ['', [Validators.required, this.isNumberValidator]],
-      padding: ['', [Validators.required, this.isNumberValidator]],
-      label: [''],
-      placeholder: [''],
-      color: [''],
+      width: [ '', [ Validators.required, this.isNumberValidator ] ],
+      height: [ '', [ Validators.required, this.isNumberValidator ] ],
+      border: [ '', [ Validators.required, this.isNumberValidator ] ],
+      borderStyle: [ '' ],
+      borderColor: [ '' ],
+      borderRadius: [ '', [ Validators.required, this.isNumberValidator ] ],
+      fontWeight: [ '', [ Validators.required, this.isNumberValidator ] ],
+      fontSize: [ '', [ Validators.required, this.isNumberValidator ] ],
+      margin: [ '', [ Validators.required, this.isNumberValidator ] ],
+      padding: [ '', [ Validators.required, this.isNumberValidator ] ],
+      label: [ '' ],
+      placeholder: [ '' ],
+      color: [ '' ],
       required: []
     });
   }
@@ -81,11 +81,16 @@ export class ExpansionPanelComponent implements OnInit {
 
   public initStyles(): void {
     switch (this.element.name) {
-      case EElementNames.input: return JSON.parse(JSON.stringify(INPUT_STYLES));
-      case EElementNames.button: return JSON.parse(JSON.stringify(BUTTON_STYLES));
-      case EElementNames.checkbox: return JSON.parse(JSON.stringify(CHECKBOX_STYLES));
-      case EElementNames.select: return JSON.parse(JSON.stringify(SELECT_STYLES));
-      case EElementNames.textarea: return JSON.parse(JSON.stringify(TEXTAREA_STYLES));
+      case EElementNames.input:
+        return JSON.parse(JSON.stringify(INPUT_STYLES));
+      case EElementNames.button:
+        return JSON.parse(JSON.stringify(BUTTON_STYLES));
+      case EElementNames.checkbox:
+        return JSON.parse(JSON.stringify(CHECKBOX_STYLES));
+      case EElementNames.select:
+        return JSON.parse(JSON.stringify(SELECT_STYLES));
+      case EElementNames.textarea:
+        return JSON.parse(JSON.stringify(TEXTAREA_STYLES));
     }
   }
 

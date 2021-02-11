@@ -10,14 +10,15 @@ import { FormBuilderModel } from 'src/app/shared/models/form-builder.model';
 })
 export class FormBuilderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getFormBuilderById(id: number): Observable<FormBuilderModel> {
     return this.http.get(`http://localhost:3000/form-builder?userId=${id}`)
       .pipe(
         map((response: Response) => response[0]
-      )
-    );
+        )
+      );
   }
 
   saveFormBuilder(builder: FormBuilderModel): Observable<any> {

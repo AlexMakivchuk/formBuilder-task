@@ -7,7 +7,7 @@ import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-con
 @Component({
   selector: 'app-form-style-textarea',
   templateUrl: './form-style-textarea.component.html',
-  styleUrls: ['./form-style-textarea.component.scss']
+  styleUrls: [ './form-style-textarea.component.scss' ]
 })
 export class FormStyleTextareaComponent implements OnInit {
   @Input() form: FormGroup;
@@ -16,7 +16,7 @@ export class FormStyleTextareaComponent implements OnInit {
   @Output() submit = new EventEmitter<string>();
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
-  fontWeight = [...FONT_WEIGHT];
+  fontWeight = [ ...FONT_WEIGHT ];
 
   ngOnInit(): void {
     this.selected = this.borderStyles[0];

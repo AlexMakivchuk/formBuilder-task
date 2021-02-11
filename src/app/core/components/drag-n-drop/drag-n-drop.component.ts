@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {
-    CdkDragDrop,
-    moveItemInArray,
-    transferArrayItem
-  } from '@angular/cdk/drag-drop';
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from '@angular/cdk/drag-drop';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -31,7 +31,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 @Component({
   selector: 'app-drag-n-drop',
   templateUrl: './drag-n-drop.component.html',
-  styleUrls: ['./drag-n-drop.component.scss']
+  styleUrls: [ './drag-n-drop.component.scss' ]
 })
 export class DragNDropComponent implements OnInit, OnDestroy {
 
@@ -43,11 +43,11 @@ export class DragNDropComponent implements OnInit, OnDestroy {
   public names = EElementNames;
   public disabled = false;
   public generalStyles$: Observable<NameValueInterface>;
-  public generalStylesElement: NameValueInterface = { name: 'general styles', type: '', value: '', styles: { ...GENERAL_STYLES }};
+  public generalStylesElement: NameValueInterface = { name: 'general styles', type: '', value: '', styles: { ...GENERAL_STYLES } };
 
   constInitElements: NameValueInterface[] = [
     { name: EElementNames.input, value: 'input', type: '', required: false, styles: { ...INPUT_STYLES } },
-    { name: EElementNames.select, value: 'select', type: '', required: false, styles: { ...SELECT_STYLES }, options: [...CONST_OPTIONS]},
+    { name: EElementNames.select, value: 'select', type: '', required: false, styles: { ...SELECT_STYLES }, options: [ ...CONST_OPTIONS ] },
     { name: EElementNames.checkbox, value: 'checkbox', type: '', required: false, styles: { ...CHECKBOX_STYLES } },
     { name: EElementNames.button, value: 'button', type: 'basic', styles: { ...BUTTON_STYLES } },
     { name: EElementNames.button, value: 'button', type: 'primary', styles: { ...BUTTON_STYLES } },
@@ -60,36 +60,37 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private store: Store<State>,
     private formBuilderService: FormBuilderService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.initElements = [ ...this.constInitElements ];
     const id = this.getFormBuilderId();
     if (id) {
-      this.formBuilderService.getFormBuilderById(id)
-        .subscribe(value => {
+      this.formBuilderService.getFormBuilderById(id).subscribe(
+        value => {
           if (value) {
             this.store.dispatch(actions.updateFormItem(
               { payload: JSON.parse(JSON.stringify(value.builderArray)) }
-              ));
+            ));
             this.store.dispatch(actions.addGeneralStyles(
-              { payload: value.generalStyles ? value.generalStyles : { ...this.generalStylesElement }}
-              ));
+              { payload: value.generalStyles ? value.generalStyles : { ...this.generalStylesElement } }
+            ));
             this.builder = value;
           }
           this.generalStyles$ = this.getGeneralStylesFromStore();
           this.getFormItemsFromStore();
-        }
-      );
+        });
     }
   }
 
-  getGeneralStylesFromStore(): Observable<NameValueInterface>{
+  getGeneralStylesFromStore(): Observable<NameValueInterface> {
     return this.store.select(getGeneralStyles)
       .pipe(
         takeUntil(this.ngUndestroy$)
       );
   }
+
   private getFormItemsFromStore(): void {
     this.store.select(getFormItems).pipe(
       takeUntil(this.ngUndestroy$),
@@ -103,7 +104,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
           elements.forEach(e => {
             if (e.name !== EElementNames.button) {
               if (e.required) {
-                this.form.get(e.id).setValidators(e.name !== 'checkbox' ? [Validators.required] : [Validators.requiredTrue]);
+                this.form.get(e.id).setValidators(e.name !== 'checkbox' ? [ Validators.required ] : [ Validators.requiredTrue ]);
               } else {
                 this.form.get(e.id).clearValidators();
               }
@@ -141,7 +142,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      this.formElements[event.currentIndex].id = `${ this.formElements[event.currentIndex].name }-${ Date.now() }`;
+      this.formElements[event.currentIndex].id = `${this.formElements[event.currentIndex].name}-${Date.now()}`;
     }
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
     this.cdr.detectChanges();
@@ -155,32 +156,32 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     this.formElements.splice(index, 1);
     Object.keys(this.form.value).forEach(
       key => key !== 'checkbox'
-      ? this.form.get(key).setValue('')
-      : this.form.get(key).setValue(false)
+        ? this.form.get(key).setValue('')
+        : this.form.get(key).setValue(false)
     );
     this.form.removeControl(id);
     this.store.dispatch(actions.updateFormItem({ payload: JSON.parse(JSON.stringify(this.formElements)) }));
   }
 
   saveForm(gStyles: NameValueInterface): void {
-    if ( this.builder ) {
+    if (this.builder) {
       this.builder.builderArray = this.formElements;
       this.builder.generalStyles = gStyles;
       this.formBuilderService.saveFormBuilder(this.builder).subscribe();
     } else {
       const builder: FormBuilderModel = {
         userId: this.getFormBuilderId(),
-        builderArray: [...this.formElements],
+        builderArray: [ ...this.formElements ],
         generalStyles: this.generalStylesElement
       };
       this.formBuilderService.addFormBuilder(builder).subscribe();
     }
   }
 
-  getFormBuilderId(): number{
+  getFormBuilderId(): number {
     const obj = jwt_decode(localStorage.getItem('token'));
     // @ts-ignore
-    return obj ? obj.sub : null ;
+    return obj ? obj.sub : null;
   }
 
   ngOnDestroy(): void {
@@ -201,10 +202,10 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     this.saveForm(gStyles);
     this.store.dispatch(actions.logOut());
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate([ '/login' ]);
   }
 
-  addGeneralStyles(item: NameValueInterface): IStyles{
+  addGeneralStyles(item: NameValueInterface): IStyles {
     const styles = {};
     Object.keys(item.styles).forEach((key, index) => {
       styles[key] = item.styles[key].value + item.styles[key].units;

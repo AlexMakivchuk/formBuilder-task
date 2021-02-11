@@ -14,7 +14,6 @@ import { ExpansionPanelComponent } from 'src/app/core/components/expansion-panel
 import { GeneralStylesComponent } from './components/expansion-panel/components/general-styles/general-styles.component';
 
 
-
 @NgModule({
   declarations: [
     DragNDropComponent,
@@ -28,13 +27,14 @@ import { GeneralStylesComponent } from './components/expansion-panel/components/
     GeneralStylesComponent,
 
   ],
-    imports: [
-      CommonModule,
-      SharedModule,
-      CoreRoutingModule,
-    ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    CoreRoutingModule,
+  ],
   exports: [
     DragNDropComponent,
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

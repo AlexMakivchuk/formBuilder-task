@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'form-builder', loadChildren: './core/core.module#CoreModule'},
+  { path: 'form-builder', loadChildren: './core/core.module#CoreModule' },
   { path: '**', redirectTo: 'login' }
 ];
 

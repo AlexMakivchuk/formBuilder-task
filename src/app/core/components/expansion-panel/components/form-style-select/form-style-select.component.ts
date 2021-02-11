@@ -10,7 +10,7 @@ import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-con
 @Component({
   selector: 'app-form-style-select',
   templateUrl: './form-style-select.component.html',
-  styleUrls: ['./form-style-select.component.scss']
+  styleUrls: [ './form-style-select.component.scss' ]
 })
 export class FormStyleSelectComponent implements OnInit {
   @Input() form: FormGroup;
@@ -22,9 +22,9 @@ export class FormStyleSelectComponent implements OnInit {
   formItems: NameValueInterface[];
   borderStyles = [ ...BORDER_STYLES ];
   selected: string;
-  fontWeight = [...FONT_WEIGHT];
+  fontWeight = [ ...FONT_WEIGHT ];
 
-  constructor( private store: Store<State> ) {
+  constructor(private store: Store<State>) {
   }
 
   ngOnInit(): void {
@@ -42,15 +42,15 @@ export class FormStyleSelectComponent implements OnInit {
     Object.keys(this.formOptions.value).forEach(key => {
       optArray.push(this.formOptions.get(key).value);
     });
-    this.store.dispatch(actions.updateFormItemById({ payload: { ...this.element, options: optArray }}));
+    this.store.dispatch(actions.updateFormItemById({ payload: { ...this.element, options: optArray } }));
   }
 
   private buildForm(): void {
     this.formOptions = new FormGroup({
       first: new FormGroup({
-          name: new FormControl(this.options[0].name),
-          value: new FormControl(this.options[0].value),
-        }),
+        name: new FormControl(this.options[0].name),
+        value: new FormControl(this.options[0].value),
+      }),
       second: new FormGroup({
         name: new FormControl(this.options[1].name),
         value: new FormControl(this.options[1].value),

@@ -11,7 +11,7 @@ import { Message } from 'src/app/shared/models/message';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: [ './auth.component.scss' ]
 })
 export class AuthComponent implements OnInit, OnDestroy {
 
@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate([ '/login' ]);
     this.store.select(getAuthMessage)
       .pipe(
         takeUntil(this.ngUnsubscribe),

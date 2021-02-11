@@ -13,20 +13,22 @@ import { getAuthState } from 'src/app/core/reducers';
 export class UnathorizedGuard implements CanActivate {
   id: number;
   isAuth = false;
+
   constructor(
     private router: Router,
     private store: Store
-    ) { }
+  ) {
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = localStorage.getItem('token');
     this.store.select(getAuthState)
       .pipe(first()).subscribe(authState => authState ?
       this.isAuth = authState :
-      this.router.navigate(['/login']));
+      this.router.navigate([ '/login' ]));
     // @ts-ignore
     this.id = jwt_decode(token).sub;
     return this.isAuth;

@@ -10,35 +10,38 @@ import { AUTH_INPUT_FIELDS_NAMES } from 'src/app/shared/constants/element-consta
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss'],
+  styleUrls: [ './registration.component.scss' ],
 })
 export class RegistrationComponent implements OnInit {
   public form: FormGroup;
+
   constructor(
     private router: Router,
     private userService: UserService,
     private store: Store
   ) {
   }
+
   public inputFields = { ...AUTH_INPUT_FIELDS_NAMES };
+
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      name: new FormControl(null, [Validators.required]),
-      surname: new FormControl(null, [Validators.required]),
-      agree: new FormControl(false, [Validators.requiredTrue])
+      email: new FormControl(null, [ Validators.required, Validators.email ]),
+      password: new FormControl(null, [ Validators.required, Validators.minLength(6) ]),
+      name: new FormControl(null, [ Validators.required ]),
+      surname: new FormControl(null, [ Validators.required ]),
+      agree: new FormControl(false, [ Validators.requiredTrue ])
     });
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.store.dispatch(registrateUser( { payload: this.form.value }));
+      this.store.dispatch(registrateUser({ payload: this.form.value }));
     }
   }
 
   toLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate([ '/login' ]);
   }
 
 }

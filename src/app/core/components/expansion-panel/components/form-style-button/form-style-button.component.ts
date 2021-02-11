@@ -7,15 +7,15 @@ import { BORDER_STYLES, FONT_WEIGHT } from 'src/app/shared/constants/element-con
 @Component({
   selector: 'app-form-style-button',
   templateUrl: './form-style-button.component.html',
-  styleUrls: ['./form-style-button.component.scss']
+  styleUrls: [ './form-style-button.component.scss' ]
 })
 export class FormStyleButtonComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() element: NameValueInterface;
   // tslint:disable-next-line:no-output-native
   @Output() submit = new EventEmitter<string>();
-  borderStyles = [...BORDER_STYLES];
-  fontWeight = [...FONT_WEIGHT];
+  borderStyles = [ ...BORDER_STYLES ];
+  fontWeight = [ ...FONT_WEIGHT ];
 
   constructor() {
   }
