@@ -1,10 +1,10 @@
 <div class="h_100">
   <div cdkDropListGroup *ngrxLet="generalStyles$; let styles">
     <div class="example-container border-example-list">
-      <app-expansion-panel [element]="styles ? styles : generalStylesElement"></app-expansion-panel>
+      <app-expansion-panel [element]="styles || generalStylesElement"></app-expansion-panel>
       <app-expansion-panel *ngFor="let element of formElements" [element]="element"></app-expansion-panel>
     </div>
-    <div class="example-container " [ngStyle]="addGeneralStyles(styles ? styles : generalStylesElement)">
+    <div class="example-container " [ngStyle]="addGeneralStyles(styles || generalStylesElement)">
       <div
         cdkDropList
         #formElementsList="cdkDropList"

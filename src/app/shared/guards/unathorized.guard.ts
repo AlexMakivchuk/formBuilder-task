@@ -12,7 +12,7 @@ import { getAuthState } from 'src/app/core/reducers';
 })
 export class UnathorizedGuard implements CanActivate {
   id: number;
-  isAuth = false;
+  isAuth: boolean;
 
   constructor(
     private router: Router,

@@ -7,8 +7,8 @@
           id="{{ element.id }}"
           [disabled]="disabled"
           [(ngModel)]="value"
-          [ngStyle]="addStyle()"
-          ></textarea>
+          [ngStyle]="addStyle()">
+</textarea>
 <mat-hint class="error" *ngIf="hasError && submited">
   <span>Error, required input</span>
 </mat-hint>

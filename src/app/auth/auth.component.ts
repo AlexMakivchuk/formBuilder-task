@@ -26,14 +26,12 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.router.navigate([ '/login' ]);
-    this.store.select(getAuthMessage)
-      .pipe(
+    this.store.select(getAuthMessage).pipe(
         takeUntil(this.ngUnsubscribe),
         tap(message => this.message = { ...message }),
         delay(5000),
         tap(() => this.message = { text: '', type: '' })
-      )
-      .subscribe();
+      ).subscribe();
   }
 
   ngOnDestroy(): void {
