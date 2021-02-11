@@ -1,6 +1,6 @@
 <div *ngIf="element">
   <div>
-    <label>{{element.styles.label.value}}</label>
+    <label>{{ element.styles.label.value }}</label>
   </div>
   <input id="{{ element.id }}"
          class="input"
@@ -8,10 +8,13 @@
          [disabled]="disabled"
          [ngStyle]="addStyle()"
          [(ngModel)]="value"
-         [placeholder]="element.styles.placeholder.value">
-  <mat-hint class="error" *ngIf="hasError && submited">
-    <span>Error, required input</span>
-  </mat-hint>
+         [placeholder]="element.styles.placeholder.value"
+         (blur)="onTouched()">
+  <div>
+    <mat-hint class="error" *ngIf="hasError">
+      <span>Error, required input</span>
+    </mat-hint>
+  </div>
 </div>
 
 <span *ngIf="!element">
@@ -20,8 +23,11 @@
          [type]="type"
          [disabled]="disabled"
          [(ngModel)]="value"
-         [placeholder]="placeholder">
-  <mat-hint class="error" *ngIf="hasError && submited">
+         [placeholder]="placeholder"
+         (blur)="onTouched()">
+  <div>
+    <mat-hint class="error" *ngIf="hasError">
     <span>Error, required input</span>
   </mat-hint>
+  </div>
 </span>

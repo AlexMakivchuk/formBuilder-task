@@ -1,21 +1,21 @@
 <form [formGroup]="form" (submit)="onSubmit()">
 
-  <div class="formControl">
+  <div class="form-control">
     <div>label </div><input [formControlName]="'label'"><span> px</span>
   </div>
 
-  <div class="formControl">
+  <div class="form-control">
     <div>color </div><input type="color" [formControlName]="'color'"><span> px</span>
   </div>
 
-  <div class="formControl">
+  <div class="form-control">
     <div>font weight</div>
     <select [formControlName]="'fontWeight'">
       <option *ngFor="let weight of fontWeight" [value]="weight" >{{ weight }}</option>
     </select>
   </div>
 
-  <div class="formControl">
+  <div class="form-control">
     <div>font size </div>
     <input type="number" [formControlName]="'fontSize'">
     <span> px</span>

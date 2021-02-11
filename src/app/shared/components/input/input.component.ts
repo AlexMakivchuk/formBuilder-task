@@ -42,9 +42,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   // tslint:disable-next-line:variable-name
   _value: any = '';
   onChange = (value) => {
-  };
+  }
   onTouched = () => {
-  };
+  }
 
   ngOnInit(): void {
 
@@ -55,6 +55,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   }
 
   registerOnChange(fn: (value: number) => void): void {
+    // console.log(this.hasError);
     this.onChange = fn;
   }
 

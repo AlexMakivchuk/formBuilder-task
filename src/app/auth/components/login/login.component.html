@@ -1,30 +1,32 @@
-<div >
-<h5>Введите данные для входа</h5>
+<div>
+  <h5>Введите данные для входа</h5>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="" [ngClass]="{'has-error':form.get('email').invalid && form.get('email').touched}">
-    <app-input [name]="inputFields.email"
-               [type]="'text'"
-               [placeholder]="inputFields.email"
-               [formControlName]="inputFields.email">
-    </app-input>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <app-input [name]="inputFields.email"
+                 [type]="'text'"
+                 [placeholder]="inputFields.email"
+                 [formControlName]="inputFields.email"
+                 [hasError]="form.get('email').invalid && form.get('email').touched">
+      </app-input>
+    </div>
 
-  <div class="" [ngClass]="{'has-error':form.get('password').invalid && form.get('password').touched}">
-    <app-input [placeholder]="inputFields.password"
-               [type]="inputFields.password"
-               [formControlName]="inputFields.password"
-               [name]="inputFields.password">
-    </app-input>
-  </div>
+    <div>
+      <app-input [placeholder]="inputFields.password"
+                 [type]="inputFields.password"
+                 [formControlName]="inputFields.password"
+                 [name]="inputFields.password"
+                 [hasError]="form.get('password').invalid && form.get('password').touched">
+      </app-input>
+    </div>
 
-  <div>
-    <button class="button" [disabled]="form.invalid" >Вход</button>
-  </div>
-  <p  class="">
-    Нет аккаунта? <span class="span-butt" (click)="toRegistration()">Зарегистрироваться</span>
-  </p>
-</form>
+    <div>
+      <button class="button" [disabled]="form.invalid">Вход</button>
+    </div>
+    <p>
+      Нет аккаунта? <span class="span-button" (click)="toRegistration()">Зарегистрироваться</span>
+    </p>
+  </form>
 </div>
 
 

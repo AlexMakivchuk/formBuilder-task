@@ -1,10 +1,10 @@
 <div>
-  <label>{{element.styles.label.value}}</label>
+  <label>{{ element.styles.label.value }}</label>
 </div>
 <textarea
           cols="30"
           rows="10"
-          id="{{element.id}}"
+          id="{{ element.id }}"
           [disabled]="disabled"
           [(ngModel)]="value"
           [ngStyle]="addStyle()"

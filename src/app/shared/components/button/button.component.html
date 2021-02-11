@@ -1,24 +1,22 @@
 <section>
   <div class="example-button-row">
     <button *ngIf="element?.type === 'basic' || buttonType === 'basic'"
-            class="{{element?.type || buttonType}}"
+            class="{{ element?.type || buttonType }}"
             id="{{ element?.id }}"
             type="submit"
             [disabled]="disabled"
             [ngStyle]="addStyle()"
-            (click)="saveForm()"
-    >
-      {{element ? element.styles.label.value : click}}
+            (click)="saveForm()">
+      {{ element ? element.styles.label.value : click }}
     </button>
     <button *ngIf="element?.type === 'primary' || buttonType === 'primary'"
-            class="{{element?.type || buttonType}}"
+            class="{{ element?.type || buttonType }}"
             id="{{ element?.id }}"
             type="submit"
             [disabled]="disabled"
             [ngStyle]="addStyle()"
-            (click)="saveForm()"
-    >
-      {{ element?.styles.label.value || click}}
+            (click)="saveForm()">
+      {{ element?.styles.label.value || click }}
     </button>
   </div>
 </section>

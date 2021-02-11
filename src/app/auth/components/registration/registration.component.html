@@ -4,63 +4,62 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
       <div class="form-input">
-        <span [ngClass]="form.get('email').invalid && form.get('email').touched ? 'color-red' : ''">*</span>
+        <span [class.color-red]="form.get('email').invalid && form.get('email').touched">*</span>
         <app-input [formControlName]="inputFields.email"
                    [name]="inputFields.email"
                    [placeholder]="inputFields.email"
-        >
+                   [hasError]="form.get('email').invalid && form.get('email').touched">
         </app-input>
       </div>
     </div>
     <div class="form-group">
       <div class="form-input">
-        <span [ngClass]="form.get('password').invalid && form.get('password').touched ? 'color-red' : ''">*</span>
+        <span [class.color-red]="form.get('password').invalid && form.get('password').touched">*</span>
         <app-input [type]="inputFields.password"
                    [placeholder]="inputFields.password"
                    [formControlName]="inputFields.password"
                    [name]="inputFields.password"
-        >
+                   [hasError]="form.get('password').invalid && form.get('password').touched">
         </app-input>
       </div>
     </div>
     <div>
       <div class="form-input">
-        <span [ngClass]="form.get('name').invalid && form.get('name').touched ? 'color-red' : ''">*</span>
+        <span [class.color-red]="form.get('name').invalid && form.get('name').touched">*</span>
         <app-input [placeholder]="inputFields.name"
                    [formControlName]="inputFields.name"
                    [name]="inputFields.name"
-        >
+                   [hasError]="form.get('name').invalid && form.get('name').touched">
         </app-input>
       </div>
     </div>
     <div>
       <div class="form-input">
-        <span [ngClass]="form.get('surname').invalid && form.get('surname').touched ? 'color-red' : ''">*</span>
+        <span [class.color-red]="form.get('surname').invalid && form.get('surname').touched">*</span>
         <app-input [placeholder]="inputFields.surname"
                    [formControlName]="inputFields.surname"
                    [name]="inputFields.surname"
-        >
+                   [hasError]="form.get('surname').invalid && form.get('surname').touched">
         </app-input>
       </div>
     </div>
 
     <div>
       <div class="form-input">
-        <span [ngClass]="form.get('agree').invalid && form.get('agree').touched ? 'color-red' : ''">*</span>
+        <span [class.color-red]="form.get('agree').invalid && form.get('agree').touched">*</span>
         <app-checkbox [formControlName]="inputFields.agree"
                       [name]="inputFields.agree"
-                      [label]="'Agree'"
-        >
+                      [label]="'Agree'">
         </app-checkbox>
       </div>
     </div>
 
-    <div class="">
+    <div>
       <button type="submit" class="button" [disabled]="form.invalid">Регистрация</button>
     </div>
 
-    <p class=" text-xs-centr">
-      Зарегистрированы? <span class="span-butt" (click)="toLogin()">Войти</span>
+    <p class="text-xs-centr">
+      Зарегистрированы? <span class="span-button" (click)="toLogin()">Войти</span>
     </p>
   </form>
 </div>

@@ -1,18 +1,20 @@
 @import "~src/assets/variables";
 
-.auth-content{
+.auth-content {
   margin-bottom: 20px;
 
 }
-.auth{
+
+.auth {
   background: $text-color-4;
   width: 410px;
-  border:1px solid $text-color-6;
+  border: 1px solid $text-color-6;
   border-radius: 5px;
   padding-bottom: 40px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
-.auth-header{
+
+.auth-header {
   margin-bottom: 20px;
   background: linear-gradient(to top, $text-color-3, $text-color-4);
   width: auto;
@@ -20,7 +22,8 @@
   padding-top: 15px;
   border-radius: 5px;
 }
-.auth-align{
+
+.auth-align {
   text-align: -webkit-center;
   padding: 20px;
 }

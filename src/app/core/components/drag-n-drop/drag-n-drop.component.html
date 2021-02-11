@@ -15,44 +15,39 @@
         <form (submit)="onSubmit($event)" [formGroup]="form">
           <div class="form-element mh-30" cdkDrag *ngFor="let element of formElements; index as i">
             <div class="element">
-
               <div [ngSwitch]="element.name" class="align-center m-10">
                 <div *ngSwitchCase="names.select">
                   <app-select [formControlName]="element.id"
                               [element]="element"
                               [type]="dragNDropType"
-                              [disabled]="disabled"
-                  >
+                              [disabled]="disabled">
                   </app-select>
                 </div>
                 <div *ngSwitchCase="names.input">
                   <app-input [formControlName]="element.id"
                              [element]="element"
                              [type]="dragNDropType"
-                             [disabled]="disabled"
-                  >
+                             [disabled]="disabled">
                   </app-input>
                 </div>
                 <span *ngSwitchCase="names.checkbox">
                   <app-checkbox [formControlName]="element.id"
                                 [element]="element"
                                 [type]="dragNDropType"
-                                [disabled]="disabled"
-                  ></app-checkbox>
+                                [disabled]="disabled">
+                  </app-checkbox>
                 </span>
                 <span *ngSwitchCase="names.button">
                   <app-button [element]="element"
                               [type]="dragNDropType"
-                              [disabled]="form.invalid"
-                  >
+                              [disabled]="form.invalid">
                   </app-button>
                 </span>
                 <span *ngSwitchCase="names.textarea">
                   <app-textarea [formControlName]="element.id"
                                 [element]="element"
                                 [type]="dragNDropType"
-                                [disabled]="disabled"
-                  >
+                                [disabled]="disabled">
                   </app-textarea>
                 </span>
               </div>
@@ -64,8 +59,7 @@
                       matSuffix
                       mat-icon-button
                       aria-label="Clear"
-                      (click)="delElement(element.id, i)"
-              >
+                      (click)="delElement(element.id, i)">
                 <mat-icon>close</mat-icon>
               </button>
             </div>

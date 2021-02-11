@@ -1,12 +1,12 @@
-<div class="auth-align" >
-  <div class="auth" >
+<div class="auth-align">
+  <div class="auth">
     <div class="auth-header">
-      <div class="alert alert-{{message.type}}"
+      <div class="alert alert-{{ message.type }}"
            *ngIf="message.text">
-        <b>{{message.text}}</b>
+        <b>{{ message.text }}</b>
       </div>
     </div>
-    <div class="auth-content" >
+    <div class="auth-content">
       <router-outlet></router-outlet>
     </div>
   </div>

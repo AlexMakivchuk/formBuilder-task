@@ -1,20 +1,28 @@
-input{
+@import "~src/assets/variables";
+
+input {
   margin-bottom: 5px;
   height: 30px;
   border-radius: 4px;
 }
-div{
+
+div {
   width: 350px;
   margin-bottom: 15px;
 }
-.span-butt {
+
+.span-button {
   cursor: pointer;
-  color: blue;
+  color: $text-color-10;
 }
 
 .button {
   padding: 5px 20px 5px 20px;
   margin: 5px;
   border-radius: 5px;
+}
+
+.has-error {
+  color: $text-color-2
 }
 

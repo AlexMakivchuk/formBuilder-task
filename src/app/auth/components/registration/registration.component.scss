@@ -1,18 +1,15 @@
 @import "~src/assets/variables";
 
-app-input{
-
-}
 div{
   width: 350px;
 }
 
 .form-input {
   margin-bottom: 5px;
-  height: 30px;
+  min-height: 30px;
 }
 
-.span-butt {
+.span-button {
   cursor: pointer;
   color: $text-color-10;
 }

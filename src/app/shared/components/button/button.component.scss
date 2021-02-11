@@ -36,12 +36,13 @@ button {
   height: 40px;
   border-radius: 20px;
   width: 80px;
+
   &:disabled {
     cursor: not-allowed;
   }
 }
 
-.basic{
+.basic {
   background-color: $bg-color-white;
 
   &:active {

@@ -1,7 +1,7 @@
-  <select id="{{element.id}}"
+  <select id="{{ element.id }}"
           [disabled]="disabled"
           [(ngModel)]="value"
           (change)="change()"
           [ngStyle]="addStyle()">
-    <option *ngFor="let option of options; index as i" [value]="option.value">{{option.name}}</option>
+    <option *ngFor="let option of options; index as i" [value]="option.value">{{ option.name }}</option>
   </select>
