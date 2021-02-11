@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
-import { IStyles } from 'src/app/shared/models/i-styles';
+import { StylesService } from 'src/app/shared/services/styles.service';
 
 @Component({
   selector: 'app-button',
@@ -16,20 +16,15 @@ export class ButtonComponent implements OnInit {
   @Input() buttonType: string;
   @Output() save = new EventEmitter();
 
-  constructor() {
-  }
+  constructor(private stylesService: StylesService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  addStyle(): IStyles {
-    const styles = {};
+  addStyle(): object {
     if (this.type === 'form') {
-      Object.keys(this.element.styles).forEach((key, index) => {
-        styles[key] = this.element.styles[key].value + this.element.styles[key].units;
-      });
-      return styles;
+      return this.stylesService.createStyleObject(this.element.styles);
     }
+    return {};
   }
 
   saveForm(): void {

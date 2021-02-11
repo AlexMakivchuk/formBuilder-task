@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { IStyles } from 'src/app/shared/models/i-styles';
+import { StylesService } from 'src/app/shared/services/styles.service';
 
 @Component({
   selector: 'app-textarea',
@@ -17,9 +18,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
   ]
 })
 export class TextareaComponent implements OnInit, ControlValueAccessor {
-
-  constructor() {
-  }
+  disabled: boolean;
 
   @Input()
   set value(value: any) {
@@ -31,7 +30,6 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
-  @Input() disabled: boolean;
   @Input() inputClass;
   @Input() hasError;
   @Input() element: NameValueInterface;
@@ -41,18 +39,19 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   // tslint:disable-next-line:variable-name
   _value: any;
 
-  ngOnInit(): void {
-  }
+  constructor(private stylesService: StylesService) { }
+
+  ngOnInit(): void { }
 
   writeValue(value: number): void {
     this.onChange(this.value);
   }
 
   private onChange = (value: number) => {
-  };
+  }
 
   private onTouched = () => {
-  };
+  }
 
   public registerOnChange(fn: (value: number) => void): void {
     this.onChange = fn;
@@ -67,13 +66,10 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   }
 
   addStyle(): IStyles {
-    const styles = {};
     if (this.type === 'form') {
-      Object.keys(this.element.styles).forEach((key, index) => {
-        styles[key] = this.element.styles[key].value + this.element.styles[key].units;
-      });
-      return styles;
+      return this.stylesService.createStyleObject(this.element.styles);
     }
+    return {};
   }
 
 }

@@ -56,7 +56,6 @@ import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.c
     TextareaComponent,
     ReactiveComponentModule
   ]
-
 })
 export class SharedModule {
 }

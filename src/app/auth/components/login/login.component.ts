@@ -17,16 +17,14 @@ import { AUTH_INPUT_FIELDS_NAMES } from 'src/app/shared/constants/element-consta
 
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  public inputFields = AUTH_INPUT_FIELDS_NAMES;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
     private store: Store<State>
-  ) {
-  }
-
-  public inputFields = AUTH_INPUT_FIELDS_NAMES;
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({

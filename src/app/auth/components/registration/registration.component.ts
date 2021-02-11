@@ -19,8 +19,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private store: Store
-  ) {
-  }
+  ) { }
 
   public inputFields = { ...AUTH_INPUT_FIELDS_NAMES };
 

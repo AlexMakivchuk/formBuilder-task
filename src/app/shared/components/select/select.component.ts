@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name-value-interface';
 import { IStyles } from 'src/app/shared/models/i-styles';
+import { StylesService } from 'src/app/shared/services/styles.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { IStyles } from 'src/app/shared/models/i-styles';
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input() options: OptionsNameValue[] = [];
-  @Input() disabled: boolean;
+  disabled: boolean;
   @Input() inputClass;
   @Input() hasError;
   @Input() element: NameValueInterface;
@@ -36,15 +37,16 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
-  constructor() {
-  }
+  constructor(private stylesService: StylesService) { }
 
   // tslint:disable-next-line:variable-name
   _value: any;
+
   onChange = (value) => {
-  };
+  }
+
   onTouched = () => {
-  };
+  }
 
   writeValue(value): void {
     this.onChange(value);
@@ -67,20 +69,12 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
       this.options = this.element.options.slice();
     }
     this._value = this.options[0].value;
-
   }
 
   addStyle(): IStyles {
-    const styles = {};
     if (this.type === 'form') {
-      Object.keys(this.element.styles).forEach((key) => {
-        styles[key] = this.element.styles[key].value + this.element.styles[key].units;
-      });
-      return styles;
+      return this.stylesService.createStyleObject(this.element.styles);
     }
+    return {};
   }
-
-  change(): void {
-  }
-
 }

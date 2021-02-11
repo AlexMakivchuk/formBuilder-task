@@ -4,8 +4,8 @@
       <app-expansion-panel [element]="styles || generalStylesElement"></app-expansion-panel>
       <app-expansion-panel *ngFor="let element of formElements" [element]="element"></app-expansion-panel>
     </div>
-    <div class="example-container " [ngStyle]="addGeneralStyles(styles || generalStylesElement)">
-      <div
+    <div class="example-container">
+      <div [ngStyle]="addGeneralStyles(styles ? styles: generalStylesElement)"
         cdkDropList
         #formElementsList="cdkDropList"
         [cdkDropListData]="formElements"
@@ -19,22 +19,19 @@
                 <div *ngSwitchCase="names.select">
                   <app-select [formControlName]="element.id"
                               [element]="element"
-                              [type]="dragNDropType"
-                              [disabled]="disabled">
+                              [type]="dragNDropType">
                   </app-select>
                 </div>
                 <div *ngSwitchCase="names.input">
                   <app-input [formControlName]="element.id"
                              [element]="element"
-                             [type]="dragNDropType"
-                             [disabled]="disabled">
+                             [type]="dragNDropType">
                   </app-input>
                 </div>
                 <span *ngSwitchCase="names.checkbox">
                   <app-checkbox [formControlName]="element.id"
                                 [element]="element"
-                                [type]="dragNDropType"
-                                [disabled]="disabled">
+                                [type]="dragNDropType">
                   </app-checkbox>
                 </span>
                 <span *ngSwitchCase="names.button">
@@ -46,8 +43,7 @@
                 <span *ngSwitchCase="names.textarea">
                   <app-textarea [formControlName]="element.id"
                                 [element]="element"
-                                [type]="dragNDropType"
-                                [disabled]="disabled">
+                                [type]="dragNDropType">
                   </app-textarea>
                 </span>
               </div>

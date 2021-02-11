@@ -5,14 +5,14 @@
   max-width: 100%;
   min-width: 30%;
   height: 100%;
-  min-height: 650px;
+  min-height: auto;
   display: inline-block;
   vertical-align: top;
 }
 
 .example-list {
-  min-width: 33%;
-  min-height: 500px;
+  min-width: 300px;
+  min-height: 400px;
   height: 100%;
   background: $bg-color-white;
   border-radius: 4px;

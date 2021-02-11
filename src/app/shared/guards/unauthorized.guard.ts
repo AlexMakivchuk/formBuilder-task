@@ -10,15 +10,14 @@ import { getAuthState } from 'src/app/core/reducers';
 @Injectable({
   providedIn: 'root'
 })
-export class UnathorizedGuard implements CanActivate {
+export class UnauthorizedGuard implements CanActivate {
   id: number;
   isAuth: boolean;
 
   constructor(
     private router: Router,
     private store: Store
-  ) {
-  }
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,

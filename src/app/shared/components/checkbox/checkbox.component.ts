@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { IStyles } from 'src/app/shared/models/i-styles';
+import { StylesService } from 'src/app/shared/services/styles.service';
 
 @Component({
   selector: 'app-checkbox',
@@ -17,17 +18,15 @@ import { IStyles } from 'src/app/shared/models/i-styles';
   ]
 })
 export class CheckboxComponent implements OnInit {
+  disabled: boolean;
   @Input() element: NameValueInterface;
-  @Input() disabled: boolean;
   @Input() type: string;
   @Input() name: string;
   @Input() label: string;
 
-  constructor() {
-  }
+  constructor(private stylesService: StylesService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get value(): any {
     return this._value;
@@ -45,10 +44,10 @@ export class CheckboxComponent implements OnInit {
   }
 
   private onChange = (value: number) => {
-  };
+  }
 
   private onTouched = () => {
-  };
+  }
 
   public registerOnChange(fn: (value: number) => void): void {
     this.onChange = fn;
@@ -63,13 +62,10 @@ export class CheckboxComponent implements OnInit {
   }
 
   addStyle(): IStyles {
-    const styles = {};
     if (this.type === 'form') {
-      Object.keys(this.element.styles).forEach(key => {
-        styles[key] = this.element.styles[key].value + this.element.styles[key].units;
-      });
-      return styles;
+      return this.stylesService.createStyleObject(this.element.styles);
     }
+    return {};
   }
 
 }

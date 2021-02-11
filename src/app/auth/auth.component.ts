@@ -21,8 +21,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private store: Store
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.router.navigate([ '/login' ]);

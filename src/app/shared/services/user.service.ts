@@ -12,21 +12,18 @@ import { JsonServerResponse } from 'src/app/shared/models/json-server-response';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   userLogin(user): Observable<string> {
-    return this.http.post(`http://localhost:3000/login`, user)
-      .pipe(
-        map((res: JsonServerResponse) => res.accessToken)
-      );
+    return this.http.post(`http://localhost:3000/login`, user).pipe(
+      map((res: JsonServerResponse) => res.accessToken)
+    );
   }
 
   createNewUser(user: User): Observable<string> {
-    return this.http.post('http://localhost:3000/users', user)
-      .pipe(
-        map((res: JsonServerResponse) => res.accessToken)
-      );
+    return this.http.post('http://localhost:3000/users', user).pipe(
+      map((res: JsonServerResponse) => res.accessToken)
+    );
   }
 
 }

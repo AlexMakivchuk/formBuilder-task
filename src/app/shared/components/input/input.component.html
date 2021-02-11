@@ -11,8 +11,8 @@
          [placeholder]="element.styles.placeholder.value"
          (blur)="onTouched()">
   <div>
-    <mat-hint class="error" *ngIf="hasError">
-      <span>Error, required input</span>
+    <mat-hint class="input-error" *ngIf="hasError">
+      <span [class.color-red]="hasError">Error, required input</span>
     </mat-hint>
   </div>
 </div>
@@ -26,8 +26,8 @@
          [placeholder]="placeholder"
          (blur)="onTouched()">
   <div>
-    <mat-hint class="error" *ngIf="hasError">
-    <span>Error, required input</span>
+    <mat-hint class="input-error" *ngIf="hasError">
+    <span [class.color-red]="hasError">Error, required input</span>
   </mat-hint>
   </div>
 </span>
