@@ -63,7 +63,7 @@ describe('FormBuilderService', () => {
         });
 
       backend.expectOne('http://localhost:3000/form-builder?userId=1').flush(
-        emsg, { status: 404, statusText: 'Not Found'});
+        emsg, { status: 404, statusText: 'Not Found' });
       backend.verify();
     })
   );
@@ -91,7 +91,7 @@ describe('FormBuilderService', () => {
         });
 
       backend.expectOne(req => req.body !== {}).flush(
-        emsg, { status: 400, statusText: 'Bad Request'});
+        emsg, { status: 400, statusText: 'Bad Request' });
       backend.verify();
     })
   );
@@ -120,7 +120,7 @@ describe('FormBuilderService', () => {
         });
 
       backend.expectOne(req => req.body !== {}).flush(
-        emsg, { status: 502, statusText: 'Bad Gateway'});
+        emsg, { status: 502, statusText: 'Bad Gateway' });
       backend.verify();
     })
   );

@@ -4,14 +4,15 @@ import { ControlContainer, FormGroupDirective, FormsModule, ReactiveFormsModule 
 import { InputComponent } from './input.component';
 import { StylesService } from 'src/app/shared/services/styles.service';
 
-const MOCK_STYLES = { width: '450px', height: '450px' , label: 'input', placeholder: 'placeholder' };
+const MOCK_STYLES = { width: '450px', height: '450px', label: 'input', placeholder: 'placeholder' };
 
 describe('InputComponent', () => {
   let component;
   let fixture: ComponentFixture<InputComponent>;
 
   const formGroupDirective = new FormGroupDirective([], []);
-  const mockElement = { name: 'mock', value: 'mock', styles: {
+  const mockElement = {
+    name: 'mock', value: 'mock', styles: {
       width: { value: '450', units: 'px' },
       height: { value: '450', units: 'px' },
       label: { value: 'input', units: '' },
@@ -33,7 +34,7 @@ describe('InputComponent', () => {
         StylesService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

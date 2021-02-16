@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DragNDropComponent } from './drag-n-drop.component';
-import { StylesService } from 'src/app/shared/services/styles.service';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { StylesService } from 'src/app/shared/services/styles.service';
 import { FormBuilderService } from 'src/app/shared/services/form-builder.service';
 
 class MockStylesService {

@@ -4,14 +4,15 @@ import { ControlContainer, FormGroupDirective, FormsModule, ReactiveFormsModule 
 import { CheckboxComponent } from './checkbox.component';
 import { StylesService } from 'src/app/shared/services/styles.service';
 
-const MOCK_STYLES = { width: '450px', height: '450px' , label: 'checkbox' };
+const MOCK_STYLES = { width: '450px', height: '450px', label: 'checkbox' };
 
 describe('CheckboxComponent', () => {
   let component: CheckboxComponent;
   let fixture: ComponentFixture<CheckboxComponent>;
 
   const formGroupDirective = new FormGroupDirective([], []);
-  const mockElement = { name: 'mock', value: 'mock', styles: {
+  const mockElement = {
+    name: 'mock', value: 'mock', styles: {
       width: { value: '450', units: 'px' },
       height: { value: '450', units: 'px' },
       label: { value: 'checkbox', units: '' },
@@ -32,7 +33,7 @@ describe('CheckboxComponent', () => {
         StylesService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

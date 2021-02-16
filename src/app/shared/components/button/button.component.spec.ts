@@ -3,16 +3,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { StylesService } from 'src/app/shared/services/styles.service';
 
-const MOCK_STYLES = { width: '450px', height: '450px' , label: 'button' };
+const MOCK_STYLES = { width: '450px', height: '450px', label: 'button' };
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
-  const mockElement = { name: 'mock', value: 'mock', type: 'basic', styles: {
+  const mockElement = {
+    name: 'mock', value: 'mock', type: 'basic', styles: {
       width: { value: '450', units: 'px' },
       height: { value: '450', units: 'px' },
       label: { value: 'button', units: '' }
-    }};
+    }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

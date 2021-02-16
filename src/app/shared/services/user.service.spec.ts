@@ -73,7 +73,7 @@ describe('UserService', () => {
         });
 
       backend.expectOne(req => req.body !== {}).flush(
-        emsg, { status: 502, statusText: 'Bad Gateway'});
+        emsg, { status: 502, statusText: 'Bad Gateway' });
       backend.verify();
     })
   );
@@ -90,7 +90,7 @@ describe('UserService', () => {
         });
 
       backend.expectOne(req => req.body !== {}).flush(
-        emsg, { status: 502, statusText: 'Bad Gateway'});
+        emsg, { status: 502, statusText: 'Bad Gateway' });
       backend.verify();
     })
   );

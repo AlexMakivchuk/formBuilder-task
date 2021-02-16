@@ -2,16 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SelectComponent } from './select.component';
-import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
-import { CONST_OPTIONS, SELECT_STYLES } from 'src/app/shared/constants/element-constants';
+import { CONST_OPTIONS } from 'src/app/shared/constants/element-constants';
 
-const MOCK_STYLES = { width: '450px', height: '450px' , label: 'input', placeholder: 'placeholder' };
+const MOCK_STYLES = { width: '450px', height: '450px', label: 'input', placeholder: 'placeholder' };
 
 describe('SelectComponent', () => {
   let component: SelectComponent;
   let fixture: ComponentFixture<SelectComponent>;
 
-  const mockElement = { name: 'mock', value: 'mock', styles: {
+  const mockElement = {
+    name: 'mock', value: 'mock', styles: {
       width: { value: '450', units: 'px' },
       height: { value: '450', units: 'px' },
       label: { value: 'input', units: '' },
@@ -26,9 +26,9 @@ describe('SelectComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers: [ ]
+      providers: []
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
