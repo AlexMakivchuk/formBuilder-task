@@ -13,4 +13,11 @@ describe('StylesService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('shuld create object for styles', () => {
+    expect(service.createStyleObject({
+      width: { value: '450', units: 'px' },
+      height: { value: '450', units: 'px' }
+    })).toEqual({ width: '450px', height: '450px' });
+  });
 });

@@ -5,4 +5,5 @@ export interface User {
   surname: string;
   status?: string;
   id?: number;
+  agree: boolean;
 }

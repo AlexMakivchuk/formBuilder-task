@@ -31,6 +31,14 @@
       "surname": "rverev",
       "agree": true,
       "id": 5
+    },
+    {
+      "email": "aa@AA.AA",
+      "password": "$2a$10$cVysFXKR6p.i5YBpsPGBR.ZO9aYbVmCJSOOqIzei1ae.AjAAuuy/6",
+      "name": "l kse",
+      "surname": "l ser",
+      "agree": true,
+      "id": 6
     }
   ],
   "form-builder": [
@@ -44,7 +52,7 @@
           "required": false,
           "styles": {
             "width": {
-              "value": "200",
+              "value": 300,
               "units": "px"
             },
             "height": {
@@ -277,7 +285,7 @@
         "value": "",
         "styles": {
           "width": {
-            "value": "500",
+            "value": 400,
             "units": "px"
           },
           "height": {
