@@ -32,7 +32,6 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
 
   @Input() hasError;
   @Input() element: NameValueInterface;
-  @Input() submited: boolean;
   @Input() type: string;
 
   // tslint:disable-next-line:variable-name

@@ -36,7 +36,6 @@ describe('Textarea component', () => {
         StylesService,
       ]
     }).compileComponents();
-
   });
 
   beforeEach(() => {
