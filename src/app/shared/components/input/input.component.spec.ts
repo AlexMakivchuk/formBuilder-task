@@ -58,9 +58,17 @@ describe('InputComponent', () => {
     // @ts-ignore
     expect(component.addStyle()).toEqual({});
   });
+
   it('should create styles for input ngStyle component.type === form', () => {
     component.type = 'form';
     // @ts-ignore
     expect(component.addStyle()).toEqual(MOCK_STYLES);
+  });
+
+  it('#setDisabledState set state to prop disabled', () => {
+    component.setDisabledState(true);
+    expect(component.disabled).toEqual(true);
+    component.setDisabledState(false);
+    expect(component.disabled).toEqual(false);
   });
 });

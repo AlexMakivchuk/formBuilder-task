@@ -28,6 +28,7 @@ describe('ButtonComponent', () => {
     fixture = TestBed.createComponent(ButtonComponent);
     component = fixture.componentInstance;
     component.element = mockElement;
+    component.click = 'emit';
     fixture.detectChanges();
   });
 
@@ -35,13 +36,20 @@ describe('ButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should', () => {
+  it('should create styles for button ', () => {
     expect(component.addStyle()).toEqual({});
   });
 
   it('should create styles for button ngStyle type === form', () => {
     component.type = 'form';
     expect(component.addStyle()).toEqual(MOCK_STYLES);
+  });
+
+  it( 'should emit click', () => {
+    component.save.subscribe(v => {
+      expect(v).toBeUndefined();
+    });
+    component.saveForm();
   });
 
 });

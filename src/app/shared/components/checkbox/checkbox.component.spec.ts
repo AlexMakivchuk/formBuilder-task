@@ -40,6 +40,7 @@ describe('CheckboxComponent', () => {
     fixture = TestBed.createComponent(CheckboxComponent);
     component = fixture.componentInstance;
     component.element = mockElement;
+    component.disabled = false;
     fixture.detectChanges();
   });
 
@@ -48,7 +49,6 @@ describe('CheckboxComponent', () => {
   });
 
   it('should create styles for checkbox ngStyle', () => {
-    // @ts-ignore
     expect(component.addStyle()).toEqual({});
   });
 
@@ -57,4 +57,12 @@ describe('CheckboxComponent', () => {
     // @ts-ignore
     expect(component.addStyle()).toEqual(MOCK_STYLES);
   });
+
+  it('#setDisabledState set state to prop disabled', () => {
+    component.setDisabledState(true);
+    expect(component.disabled).toEqual(true);
+    component.setDisabledState(false);
+    expect(component.disabled).toEqual(false);
+  });
+
 });

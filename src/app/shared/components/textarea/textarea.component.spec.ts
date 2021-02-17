@@ -60,5 +60,10 @@ describe('Textarea component', () => {
     expect(component.addStyle()).toEqual(MOCK_STYLES);
   });
 
-
+  it('#setDisabledState set state to prop disabled', () => {
+    component.setDisabledState(true);
+    expect(component.disabled).toEqual(true);
+    component.setDisabledState(false);
+    expect(component.disabled).toEqual(false);
+  });
 });

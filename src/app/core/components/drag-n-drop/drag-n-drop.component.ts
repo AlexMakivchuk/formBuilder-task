@@ -55,6 +55,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     { name: EElementNames.button, value: 'button', type: 'primary', styles: { ...BUTTON_STYLES } },
     { name: EElementNames.textarea, value: 'textarea', type: '', required: false, styles: { ...TEXTAREA_STYLES } }
   ];
+
   initElements = [];
 
   constructor(

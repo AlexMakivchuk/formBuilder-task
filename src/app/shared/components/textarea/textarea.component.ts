@@ -30,7 +30,6 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
-  @Input() inputClass;
   @Input() hasError;
   @Input() element: NameValueInterface;
   @Input() submited: boolean;

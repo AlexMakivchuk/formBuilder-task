@@ -21,10 +21,8 @@ import { StylesService } from 'src/app/shared/services/styles.service';
 export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input() options: OptionsNameValue[] = [];
   disabled: boolean;
-  @Input() inputClass;
   @Input() hasError;
   @Input() element: NameValueInterface;
-  @Input() submited: boolean;
   @Input() type: string;
 
   @Input()

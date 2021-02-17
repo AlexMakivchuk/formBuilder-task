@@ -39,7 +39,7 @@ export class CheckboxComponent implements OnInit {
 
   _value: any;
 
-  writeValue(value: number): void {
+  writeValue(value: any): void {
     this.onChange(this.value);
   }
 

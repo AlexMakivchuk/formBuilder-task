@@ -9,6 +9,6 @@
           [(ngModel)]="value"
           [ngStyle]="addStyle()">
 </textarea>
-<mat-hint class="error" *ngIf="hasError && submited">
-  <span>Error, required input</span>
+<mat-hint class="error" *ngIf="hasError">
+  <span [class.color-red]="hasError">Error, required input</span>
 </mat-hint>
