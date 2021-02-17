@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import jwt_decode from 'jwt-decode';
 import { Store } from '@ngrx/store';
 import { first } from 'rxjs/operators';
 
@@ -19,17 +18,9 @@ export class UnauthorizedGuard implements CanActivate {
     private store: Store
   ) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const token = localStorage.getItem('token');
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.store.select(getAuthState)
-      .pipe(first()).subscribe(authState => authState ?
-      this.isAuth = authState :
-      this.router.navigate([ '/login' ]));
-    // @ts-ignore
-    this.id = jwt_decode(token).sub;
+      .pipe(first()).subscribe(authState => this.isAuth = authState);
     return this.isAuth;
   }
 }
