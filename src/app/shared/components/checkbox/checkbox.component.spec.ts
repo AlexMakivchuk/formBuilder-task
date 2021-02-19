@@ -64,5 +64,4 @@ describe('CheckboxComponent', () => {
     component.setDisabledState(false);
     expect(component.disabled).toEqual(false);
   });
-
 });

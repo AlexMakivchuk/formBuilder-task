@@ -45,7 +45,7 @@ describe('ButtonComponent', () => {
     expect(component.addStyle()).toEqual(MOCK_STYLES);
   });
 
-  it( 'should emit click', () => {
+  it('should emit click', () => {
     component.save.subscribe(v => {
       expect(v).toBeUndefined();
     });

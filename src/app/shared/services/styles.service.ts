@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IStyles } from 'src/app/shared/models/i-styles';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StylesService {
 
   constructor() {

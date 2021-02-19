@@ -8,7 +8,7 @@
 
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form">
       <div class="form-control" >
         <div>width</div>
         <input type="number" [formControlName]="'width'">
@@ -68,12 +68,12 @@
       <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
       <br>
-      <button class="submit" type="submit" [disabled]="form.invalid">submit</button>
+      <button class="submit" (click)="onSubmit()" [disabled]="form.invalid">submit</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>
 
-<form [formGroup]="formOptions" (ngSubmit)="onSubmitOptions()">
+<form [formGroup]="formOptions">
   <div>
     <div class="formArrayInput" [formGroupName]="'first'">
       <span>name
@@ -100,7 +100,7 @@
         <input [formControlName]="'value'">
       </span>
   </div>
-  <button type="submit" [disabled]="formOptions.invalid">save options</button>
+  <button (click)="onSubmitOptions()" [disabled]="formOptions.invalid">save options</button>
 </form>
 <br>
 

@@ -5,7 +5,6 @@ import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { User } from 'src/app/shared/models/user';
 import { Message } from 'src/app/shared/models/message';
 
-
 export interface CoreState {
   formItems: NameValueInterface[];
   generalStyles: NameValueInterface;

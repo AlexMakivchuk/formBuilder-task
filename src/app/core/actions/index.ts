@@ -4,7 +4,6 @@ import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { User } from 'src/app/shared/models/user';
 import { Message } from 'src/app/shared/models/message';
 
-
 export const updateFormItem = createAction('add/move Item', props<{ payload: NameValueInterface[] }>());
 
 export const updateFormItemById = createAction('Update Item', props<{ payload: NameValueInterface }>());

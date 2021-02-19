@@ -29,7 +29,6 @@ import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
 import { IStyles } from 'src/app/shared/models/i-styles';
 import { StylesService } from 'src/app/shared/services/styles.service';
 
-
 @Component({
   selector: 'app-drag-n-drop',
   templateUrl: './drag-n-drop.component.html',
@@ -43,7 +42,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
   public form = new FormGroup({});
   public dragNDropType = 'form';
   public names = EElementNames;
-  public disabled = false;
+  public disabled: boolean;
   public generalStyles$: Observable<NameValueInterface>;
   public generalStylesElement: NameValueInterface = { name: 'general styles', type: '', value: '', styles: { ...GENERAL_STYLES } };
 
@@ -72,9 +71,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     if (id) {
       this.formBuilderService.getFormBuilderById(id).subscribe(
         value => {
-          if (value) {
-            this.builder = this.formBuilderService.setBuilderItemsToStore(value, this.generalStylesElement);
-          }
+          this.builder = this.formBuilderService.setBuilderItemsToStore(value, this.generalStylesElement, id);
           this.generalStyles$ = this.getGeneralStylesFromStore();
           this.getFormItemsFromStore();
         });
@@ -105,16 +102,12 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     controls.forEach(el => {
       switch (el.name) {
         case EElementNames.input:
+        case EElementNames.textarea:
+        case EElementNames.select:
           this.form.addControl(el.id, new FormControl(''));
           break;
         case EElementNames.checkbox:
           this.form.addControl(el.id, new FormControl(false));
-          break;
-        case EElementNames.textarea:
-          this.form.addControl(el.id, new FormControl(''));
-          break;
-        case EElementNames.select:
-          this.form.addControl(el.id, new FormControl(''));
           break;
       }
     });
@@ -123,7 +116,9 @@ export class DragNDropComponent implements OnInit, OnDestroy {
   private setValidatorsToForm(item: NameValueInterface): void {
     if (item.name !== EElementNames.button) {
       if (item.required) {
-        this.form.get(item.id).setValidators(item.name !== 'checkbox' ? [ Validators.required ] : [ Validators.requiredTrue ]);
+        this.form.get(item.id).setValidators(
+          item.name !== EElementNames.checkbox ? [ Validators.required ] : [ Validators.requiredTrue ]
+        );
       } else {
         this.form.get(item.id).clearValidators();
       }
@@ -152,7 +147,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
   delElement(id: string, index: number): void {
     this.formElements.splice(index, 1);
     Object.keys(this.form.value).forEach(
-      key => key !== 'checkbox'
+      key => key !== EElementNames.checkbox
         ? this.form.get(key).setValue('')
         : this.form.get(key).setValue(false)
     );
@@ -161,24 +156,15 @@ export class DragNDropComponent implements OnInit, OnDestroy {
   }
 
   saveForm(gStyles: NameValueInterface): void {
-    if (this.builder) {
-      this.builder.builderArray = this.formElements;
-      this.builder.generalStyles = gStyles;
-      this.formBuilderService.saveFormBuilder(this.builder).subscribe();
-    } else {
-      const builder: FormBuilderModel = {
-        userId: this.getFormBuilderId(),
-        builderArray: [ ...this.formElements ],
-        generalStyles: this.generalStylesElement
-      };
-      this.formBuilderService.addFormBuilder(builder).subscribe();
-    }
+    this.builder.generalStyles = gStyles;
+    this.builder.builderArray = this.formElements;
+    this.formBuilderService.saveFormBuilder(this.builder).subscribe();
   }
 
   getFormBuilderId(): number {
     const obj = jwt_decode(localStorage.getItem('token'));
     // @ts-ignore
-    return obj ? obj.sub : null;
+    return obj?.sub || null;
   }
 
   ngOnDestroy(): void {
@@ -203,7 +189,7 @@ export class DragNDropComponent implements OnInit, OnDestroy {
     this.saveForm(globalStyles);
     this.store.dispatch(actions.logOut());
     localStorage.removeItem('token');
-    this.router.navigate([ '/login' ]);
+    this.router.navigate(['/login']);
   }
 
   addGeneralStyles(item: NameValueInterface): IStyles {

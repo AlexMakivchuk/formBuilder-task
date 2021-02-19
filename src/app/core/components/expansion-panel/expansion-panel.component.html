@@ -9,33 +9,33 @@
         <span *ngIf="element.id">ID: {{ element.id }}</span>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-general-styles *ngIf="element.name === 'general styles'"></app-general-styles>
-    <app-form-style-input *ngIf="element.name === 'input'"
+    <app-general-styles *ngIf="element.name === elementNames.generalStyles"></app-general-styles>
+    <app-form-style-input *ngIf="element.name === elementNames.input"
                           [form]="form"
-                          (submit)="OnSubmit()"
+                          (submit)="onSubmit()"
                           [element]="element">
     </app-form-style-input>
-    <app-form-style-select *ngIf="element.name === 'select'"
+    <app-form-style-select *ngIf="element.name === elementNames.select"
                            [form]="form"
-                           (submit)="OnSubmit()"
+                           (submit)="onSubmit()"
                            [element]="element">
 
     </app-form-style-select>
-    <app-form-style-checkbox *ngIf="element.name === 'checkbox'"
+    <app-form-style-checkbox *ngIf="element.name === elementNames.checkbox"
                              [form]="form"
-                             (submit)="OnSubmit()"
+                             (submit)="onSubmit()"
                              [element]="element"
     >
     </app-form-style-checkbox>
-    <app-form-style-button *ngIf="element.name === 'button'"
+    <app-form-style-button *ngIf="element.name === elementNames.button"
                              [form]="form"
-                             (submit)="OnSubmit()"
+                             (submit)="onSubmit()"
                              [element]="element"
     >
     </app-form-style-button>
-    <app-form-style-textarea *ngIf="element.name === 'textarea'"
+    <app-form-style-textarea *ngIf="element.name === elementNames.textarea"
                              [form]="form"
-                             (submit)="OnSubmit()"
+                             (submit)="onSubmit()"
                              [element]="element"
     >
     </app-form-style-textarea>

@@ -10,7 +10,6 @@ import * as actions from 'src/app/core/actions';
 import { IStyles } from 'src/app/shared/models/i-styles';
 import { getGeneralStyles } from 'src/app/core/reducers';
 
-
 @Component({
   selector: 'app-general-styles',
   templateUrl: './general-styles.component.html',
@@ -70,7 +69,7 @@ export class GeneralStylesComponent implements OnInit, OnDestroy {
   public isNumberValidator = (control: FormControl): object => {
     const condition = typeof parseInt(control.value, 10) === 'number';
     return !condition ? { isNumberValidator: 'the value must be a number' } : null;
-  };
+  }
 
   ngOnDestroy(): void {
     this.ngUnsubscribe$.next(null);

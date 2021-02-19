@@ -34,13 +34,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
-      this.store.dispatch(registrateUser({ payload: this.form.value }));
-    }
+    this.store.dispatch(registrateUser({ payload: this.form.value }));
   }
 
   toLogin(): void {
-    this.router.navigate([ '/login' ]);
+    this.router.navigate(['/login']);
   }
 
 }

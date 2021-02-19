@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import * as coreActions from 'src/app/core/actions';
 import { State } from 'src/app/core/reducers';
 import { UserService } from 'src/app/shared/services/user.service';
-
+import { TOKEN } from 'src/app/shared/constants/constants';
 
 @Injectable()
 export class CoreEffects {
@@ -49,8 +49,8 @@ export class CoreEffects {
   ));
 
   private setTokenToLocalStorage(token: string): void {
-    localStorage.setItem('token', token);
-    this.router.navigate([ '/form-builder' ]);
+    localStorage.setItem(TOKEN, token);
+    this.router.navigate(['/form-builder']);
   }
 
 }

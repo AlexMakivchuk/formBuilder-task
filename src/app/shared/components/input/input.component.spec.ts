@@ -3,6 +3,7 @@ import { ControlContainer, FormGroupDirective, FormsModule, ReactiveFormsModule 
 
 import { InputComponent } from './input.component';
 import { StylesService } from 'src/app/shared/services/styles.service';
+import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
 
 const MOCK_STYLES = { width: '450px', height: '450px', label: 'input', placeholder: 'placeholder' };
 
@@ -43,9 +44,9 @@ describe('InputComponent', () => {
     component.element = mockElement;
     component.hasError = false;
     component.disabled = false;
-    component.name = 'input';
+    component.name = EElementNames.input;
     component.submited = false;
-    component.value = 'input';
+    component.value = EElementNames.input;
     component.placeholder = component.element.styles.placeholder.value;
     fixture.detectChanges();
   });

@@ -1,6 +1,6 @@
 <section>
   <div class="example-button-row">
-    <button *ngIf="element?.type === 'basic' || buttonType === 'basic'"
+    <button *ngIf="element?.type === eButtonTypes.basic || buttonType === eButtonTypes.basic"
             class="{{ element?.type || buttonType }}"
             id="{{ element?.id }}"
             type="submit"
@@ -9,7 +9,7 @@
             (click)="saveForm()">
       {{ element ? element.styles.label.value : click }}
     </button>
-    <button *ngIf="element?.type === 'primary' || buttonType === 'primary'"
+    <button *ngIf="element?.type === eButtonTypes.primary || buttonType === eButtonTypes.primary"
             class="{{ element?.type || buttonType }}"
             id="{{ element?.id }}"
             type="submit"

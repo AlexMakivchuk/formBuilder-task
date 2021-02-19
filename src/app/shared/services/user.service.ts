@@ -6,13 +6,11 @@ import { map } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user';
 import { JsonServerResponse } from 'src/app/shared/models/json-server-response';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   userLogin(user): Observable<string> {
     return this.http.post(`http://localhost:3000/login`, user).pipe(

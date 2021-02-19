@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form">
   <div class="form-control" >
     <div>width </div>
     <input type="number" [formControlName]="'width'">
@@ -30,6 +30,7 @@
     <input type="number" [formControlName]="'borderRadius'">
     <span> px</span>
   </div>
+  <p *ngIf="form.get('borderRadius').touched && form.get('borderRadius').invalid">Must Be A Number</p>
 
   <div class="form-control">
     <div>margin </div><input type="number" [formControlName]="'margin'"><span> px</span>
@@ -42,5 +43,5 @@
   <p *ngIf="form.get('padding').touched && form.get('padding').invalid">Must Be A Number</p>
 
   <br>
-  <button class="submit" type="submit" [disabled]="form.invalid">submit</button>
+  <button class="submit" (click)="onSubmit()" [disabled]="form.invalid">submit</button>
 </form>

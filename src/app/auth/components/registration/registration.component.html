@@ -1,7 +1,7 @@
 <div>
-  <h5>Введите данные для регистрации</h5>
-  <h6>Поля обязательные для заполнения (<span class="color-red">*</span>)</h6>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h5>Enter Your User Data</h5>
+  <h6>Required field's (<span class="color-red">*</span>)</h6>
+  <form [formGroup]="form">
     <div>
       <div class="form-input">
         <span [class.color-red]="form.get('email').invalid && form.get('email').touched">*</span>
@@ -55,11 +55,11 @@
     </div>
 
     <div>
-      <button type="submit" class="button" [disabled]="form.invalid">Регистрация</button>
+      <button class="button" [disabled]="form.invalid" (click)="onSubmit()">Sign Up</button>
     </div>
 
     <p>
-      Зарегистрированы? <span class="span-button" (click)="toLogin()">Войти</span>
+      Already have account? <span class="span-button" (click)="toLogin()">Sign In</span>
     </p>
   </form>
 </div>

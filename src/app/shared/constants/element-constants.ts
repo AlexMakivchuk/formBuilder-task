@@ -118,3 +118,4 @@ export const AUTH_INPUT_FIELDS_NAMES = {
   agree: 'agree'
 };
 
+

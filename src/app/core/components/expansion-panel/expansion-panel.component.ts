@@ -15,7 +15,7 @@ import { State } from 'src/app/core/reducers';
 import { EElementNames } from 'src/app/shared/enums/e-element-names.enum';
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { IStyles } from 'src/app/shared/models/i-styles';
-
+import { ELEMENT_STYLES } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-expansion-panel',
@@ -23,10 +23,12 @@ import { IStyles } from 'src/app/shared/models/i-styles';
   styleUrls: [ './expansion-panel.component.scss' ]
 })
 export class ExpansionPanelComponent implements OnInit {
-  panelOpenState = false;
+  panelOpenState: boolean;
   @Input() element: NameValueInterface;
   public form: FormGroup;
   styles: IStyles = {};
+  elementNames = EElementNames;
+  elementsStyles = ELEMENT_STYLES;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,7 +69,7 @@ export class ExpansionPanelComponent implements OnInit {
     return !condition ? { isNumberValidator: 'the value must be a number' } : null;
   }
 
-  public OnSubmit(): void {
+  public onSubmit(): void {
     Object.keys(this.form.controls).forEach((key, index) => {
       const controll = this.form.get(key);
       if (controll.value && key !== 'required') {
@@ -79,19 +81,10 @@ export class ExpansionPanelComponent implements OnInit {
     }));
   }
 
+
+
   public initStyles(): void {
-    switch (this.element.name) {
-      case EElementNames.input:
-        return JSON.parse(JSON.stringify(INPUT_STYLES));
-      case EElementNames.button:
-        return JSON.parse(JSON.stringify(BUTTON_STYLES));
-      case EElementNames.checkbox:
-        return JSON.parse(JSON.stringify(CHECKBOX_STYLES));
-      case EElementNames.select:
-        return JSON.parse(JSON.stringify(SELECT_STYLES));
-      case EElementNames.textarea:
-        return JSON.parse(JSON.stringify(TEXTAREA_STYLES));
-    }
+    return this.elementsStyles[this.element.name];
   }
 
 }

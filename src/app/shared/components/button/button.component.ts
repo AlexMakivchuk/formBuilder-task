@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 import { StylesService } from 'src/app/shared/services/styles.service';
+import { EButtonTypes } from 'src/app/shared/enums/e-button-types.enum';
 
 @Component({
   selector: 'app-button',
@@ -15,6 +16,7 @@ export class ButtonComponent implements OnInit {
   @Input() click: string;
   @Input() buttonType: string;
   @Output() save = new EventEmitter();
+  eButtonTypes = EButtonTypes;
 
   constructor(private stylesService: StylesService) { }
 

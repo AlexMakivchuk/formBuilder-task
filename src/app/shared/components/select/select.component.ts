@@ -5,7 +5,6 @@ import { NameValueInterface, OptionsNameValue } from 'src/app/shared/models/name
 import { IStyles } from 'src/app/shared/models/i-styles';
 import { StylesService } from 'src/app/shared/services/styles.service';
 
-
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',

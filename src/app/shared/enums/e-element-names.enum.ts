@@ -3,5 +3,6 @@ export enum EElementNames {
   checkbox = 'checkbox',
   button = 'button',
   select = 'select',
-  textarea = 'textarea'
+  textarea = 'textarea',
+  generalStyles = 'general styles'
 }

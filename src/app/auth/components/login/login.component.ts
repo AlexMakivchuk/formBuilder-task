@@ -34,14 +34,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const formData = this.form.value;
-    if (this.form.valid) {
-      this.store.dispatch(logIn({ payload: formData }));
-    }
+    this.store.dispatch(logIn({ payload: this.form.value }));
   }
 
   toRegistration(): void {
-    this.router.navigate([ '/registration' ]);
+    this.router.navigate(['/registration']);
   }
 
 }

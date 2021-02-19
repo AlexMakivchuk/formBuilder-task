@@ -16,7 +16,9 @@ import { SelectComponent } from 'src/app/shared/components/select/select.compone
 import { CheckboxComponent } from 'src/app/shared/components/checkbox/checkbox.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.component';
-
+import { StylesService } from 'src/app/shared/services/styles.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { FormBuilderService } from 'src/app/shared/services/form-builder.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,11 @@ import { TextareaComponent } from 'src/app/shared/components/textarea/textarea.c
     MatIconModule,
     TextareaComponent,
     ReactiveComponentModule
+  ],
+  providers: [
+    StylesService,
+    UserService,
+    FormBuilderService
   ]
 })
 export class SharedModule {

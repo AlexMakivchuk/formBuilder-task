@@ -8,9 +8,7 @@ import { FormBuilderModel } from 'src/app/shared/models/form-builder.model';
 import * as actions from 'src/app/core/actions';
 import { NameValueInterface } from 'src/app/shared/models/name-value-interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FormBuilderService {
 
   constructor(
@@ -32,14 +30,22 @@ export class FormBuilderService {
     return this.http.post(`http://localhost:3000/form-builder/`, builder);
   }
 
-  setBuilderItemsToStore(value: FormBuilderModel, generalStyles: NameValueInterface): FormBuilderModel {
+  setBuilderItemsToStore(value: FormBuilderModel, generalStyles: NameValueInterface, userId: number): FormBuilderModel {
+    let builder: FormBuilderModel = { generalStyles: null, userId: null, builderArray: [], id: null };
+    if (!value){
+      builder.generalStyles = { ...generalStyles };
+      builder.userId = userId;
+      this.addFormBuilder(builder).subscribe(val => builder.id = val.id);
+    } else {
+      builder = JSON.parse(JSON.stringify(value));
+    }
     this.store.dispatch(actions.updateFormItem(
-      { payload: JSON.parse(JSON.stringify(value.builderArray)) }
+      { payload: JSON.parse(JSON.stringify(builder.builderArray)) }
     ));
     this.store.dispatch(actions.addGeneralStyles(
-      { payload: value.generalStyles ? value.generalStyles : { ...generalStyles } }
+      { payload: builder.generalStyles }
     ));
-    return value;
+    return builder;
   }
 
 }
